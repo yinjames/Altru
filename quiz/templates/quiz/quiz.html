@@ -1,0 +1,25 @@
+{%extends 'base.html' %}
+
+{%block content%}
+<section>
+    <div class="container text-center">
+        <h3 class="py-5">{{quiz.name}}</h3>
+
+        <div class="row">
+            {%for q in question_list%}
+            <div class="col-sm-3 col-md-4">
+
+                <h4></h4>
+                <div class="card">
+                    <div class="card-body">
+                      <hp class="card-title">{{q.text}}</p>
+
+                    </div>
+                  </div>
+            </div>
+            {%endfor%}
+        </div>
+    </div>
+</section>
+    
+{%endblock content %}

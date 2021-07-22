@@ -1,0 +1,27 @@
+{%extends 'base.html' %}
+
+{%block content%}
+ 
+<section>
+    <div class="container text-center">
+        <h3 class="py-5">Test Your knowledge on Organ Donation</h3>
+
+        <div class="row">
+            {%for quiz in quiz_list%}
+            <div class="col-sm-3 col-md-4">
+
+                <h4></h4>
+                <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">{{quiz.name}}</h5>
+                      <p class="card-text">{{quiz.description}}</p>
+                      <a href="{%url 'quiz:quiz'  id=quiz.id %}" class="btn btn-primary">Take quiz</a>
+                    </div>
+                  </div>
+            </div>
+            {%endfor%}
+        </div>
+    </div>
+</section>
+    
+{%endblock content %}

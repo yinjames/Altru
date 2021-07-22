@@ -1,0 +1,134 @@
+{%extends 'base.html' %}
+{%load static %}
+{%block content%}
+<div class="container">
+    
+
+    <section>
+        <div class="py-5 text-center">
+            
+            <i class="fas fa-heartbeat  d-block mx-auto mb-1 display-3 text-primary"></i>
+            <h2>Register a decision to donate</h2>
+            <p class="lead">Use this form to record your decision to donate some or all of your organs and tissue. Fields
+                marked <span class="text-danger">*</span> are mandatory</p>
+        </div>
+
+        <div class="row g-5">
+            
+            <div class="col-md-7 col-lg-8">
+                <h4 class="mt-3">About you</h4>
+                <hr class="mb-4 text-primary">
+                <form class="needs-validation" novalidate="">
+                    <div class="row">
+                        <div class="col-sm-6 form-floating mb-3">
+
+                            <input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
+                            <label for="firstName" class="form-label">First name</label>
+                        </div>
+
+                        <div class="col-sm-6 form-floating mb-3">
+                            
+                            <input type="text" class="form-control" id="lastName" placeholder="" value="" required="">
+                            <label for="lastName" class="form-label">Last name</label>
+                        </div>
+
+                        <div class="col-md-4">
+                            
+                            <select class="form-select" id="day" required="">
+                                <option value="">Day</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                            </select>
+                            
+                        </div>
+
+                        <div class="col-md-4">
+                          
+                            <select class="form-select" id="month" required="">
+                                <option value="">Month</option>
+                                <option>January</option>
+                                <option>Febraury</option>
+                                <option>March</option>
+                                <option>April</option>
+                                <option>May</option>
+                                <option>June</option>
+                                <option>July</option>
+                                <option>August</option>
+                            </select>
+                            
+                        </div>
+
+                        <div class="col-md-4">
+                           
+                            <select class="form-select" id="month" required="">
+                                <option value="">Year</option>
+                                <option>1980</option>
+                                <option>1981</option>
+                                <option>1982</option>
+                                <option>1983</option>
+                                <option>1984</option>
+                                <option>1985</option>
+                                
+                            </select>
+                            
+                        </div>
+
+                        <h4 class="mt-3">Address</h4>
+                        <hr class="mb-4 text-primary">
+                        <div class="col-12 form-floating mb-3">
+                           
+                            <input type="text" class="form-control" id="address" placeholder="1234 Main St" required="">
+                            <label for="address" class="form-label">Address</label>
+                        </div>
+                        <div class="col-12 form-floating mb-3">
+                            
+                            <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
+                            <label for="address2" class="form-label">Address 2 <span
+                                class="text-muted">(Optional)</span></label>
+                        </div>
+
+                        <h4 class="mt-3">Contact details</h4>
+                        <hr class="mb-4 text-primary">
+                        <div class="col-12 form-floating mb-3">
+                           
+                            <input type="email" class="form-control" id="email" placeholder="you@example.com">
+                            <label for="email" class="form-label">Email</label>
+                        </div>
+
+                       <div class="col-12 form-floating mb-3">
+                           
+                            <input type="email" class="form-control" id="email" placeholder="you@example.com">
+                            <label for="email" class="form-label">Telephone</label>
+                        </div>
+                        <div class="col-12 form-floating mb-3">
+                            <input type="email" class="form-control" id="email" placeholder="you@example.com">
+                            <label for="email" class="form-label">Mobile</label>
+                        </div>
+
+                        
+
+                        
+                    </div>
+
+                    <hr class="my-4">
+
+                    <h4 class="mt-3">Confirmation</h4>
+                    <hr class="my-4">
+                    <div class="form-check mb-3">
+                        <input type="checkbox" class="form-check-input" id="confirmation">
+                        <label class="form-check-label" for="confirmation">I have read the privacy statement and give consent for the use of my information in accordance with the terms</label>
+                    </div>
+
+                    <button class="w-100 btn btn-primary btn-lg" type="submit">Submit - Yes, I want to donate</button>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
+
+{%endblock%}

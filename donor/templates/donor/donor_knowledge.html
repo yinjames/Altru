@@ -1,0 +1,290 @@
+{%extends 'base.html' %}
+{%load static %}
+{% load widget_tweaks %}
+
+{%block content%}
+<div class="container mt-5 border py-4 px-0">
+
+    <i class="fas fa-heartbeat text-primary px-4 d-block mx-auto mb-4 display-4"></i>
+    {% if form.non_field_errors %}
+    <div class="alert alert-danger" role="alert">
+        {% for error in form.non_field_errors %}
+        <p{% if forloop.last %} class="mb-0" {% endif %}>{{ error }}</p>
+            {% endfor %}
+    </div>
+    {% endif %}
+
+    <section class="mx-0 p-4 bg-primary text-white mb-4 border-0">
+        <p>You are invited to participate in a web-based online survey on Organ Donation. This is a research
+            project being conducted by James Yin, a student at University of Ghana, Computer Science Department.  It
+            should take approximately 20 minutes to complete.  </p>
+    </section>
+
+
+    <form  method="POST" >
+        {% if form.non_field_errors %}
+        <div class="alert alert-danger" role="alert">
+          {% for error in form.non_field_errors %}
+            <p{% if forloop.last %} class="mb-0"{% endif %}>{{ error }}</p>
+          {% endfor %}
+        </div>
+      {% endif %}
+      
+        {%csrf_token%}
+        {{ form.media }}
+
+        <section class="px-4">
+
+
+            <div class="mb-3">
+
+
+                {{ form.gender.label_tag }}
+
+                <br>
+                {% for pk, choice in form.gender.field.widget.choices %}
+                <div class="form-check form-check-inline mt-2">
+                    <input id="id_{{form.gender.name}}_{{ forloop.counter0 }}" name="{{form.gender.name}}"
+                        type="{{form.gender.field.widget.input_type}}" value="{{pk}}" class="form-check-input ms-2" />
+                    <label for="id_{{form.gender.name}}_{{ forloop.counter0 }}" class="custom-control-label ms-2">
+                        {{choice }}
+                    </label>
+                </div>
+                {% endfor %}
+            </div>
+
+
+            <div class="mb-3">
+
+
+                {{ form.marital_status.label_tag }}
+
+                <br>
+                {% for pk, choice in form.marital_status.field.widget.choices %}
+                <div class="form-check form-check-inline mt-2">
+                    <input id="id_{{form.marital_status.name}}_{{ forloop.counter0 }}"
+                        name="{{form.marital_status.name}}" type="{{form.marital_status.field.widget.input_type}}"
+                        value="{{pk}}" class="form-check-input ms-2" />
+                    <label for="id_{{form.marital_status.name}}_{{ forloop.counter0 }}"
+                        class="custom-control-label ms-2">{{ choice }}</label>
+                </div>
+                {% endfor %}
+            </div>
+
+
+            <div class="mb-3">
+
+
+                {{ form.qualification.label_tag }}
+
+                <br>
+                {% for pk, choice in form.qualification.field.widget.choices %}
+                <div class="form-check form-check-inline mt-2">
+                    <input id="id_{{form.qualification.name}}_{{ forloop.counter0 }}" name="{{form.qualification.name}}"
+                        type="{{form.qualification.field.widget.input_type}}" value="{{pk}}"
+                        class="form-check-input ms-2" />
+                    <label for="id_{{form.qualification.name}}_{{ forloop.counter0 }}"
+                        class="custom-control-label ms-2">{{ choice }}</label>
+                </div>
+                {% endfor %}
+            </div>
+            <hr class="my-4">
+
+            <div class="mb-3">
+
+
+                {{ form.q1.label_tag }}
+
+                <br>
+                {% for pk, choice in form.q1.field.widget.choices %}
+                <div class="form-check form-check-inline mt-2">
+                    <input id="id_{{form.q1.name}}_{{ forloop.counter0 }}" name="{{form.q1.name}}"
+                        type="{{form.q1.field.widget.input_type}}" value="{{pk}}" class="form-check-input ms-2" />
+                    <label for="id_{{form.q1.name}}_{{ forloop.counter0 }}" class="custom-control-label ms-2">
+                        {{ choice}}
+                    </label>
+                </div>
+                {% endfor %}
+            </div>
+            <hr class="my-4">
+            <div class="mb-3">
+
+
+                {{ form.q2.label_tag }}
+
+                <br>
+                {% for pk, choice in form.q2.field.widget.choices %}
+                <div class="form-check form-check-inline mt-2">
+                    <input id="id_{{form.q2.name}}_{{ forloop.counter0 }}" name="{{form.q2.name}}"
+                        type="{{form.q2.field.widget.input_type}}" value="{{pk}}" class="form-check-input ms-2" />
+                    <label for="id_{{form.q2.name}}_{{ forloop.counter0 }}" class="custom-control-label ms-2">
+                        {{choice}}
+                    </label>
+                </div>
+                {% endfor %}
+            </div>
+            <hr class="my-4">
+            <div class="mb-3">
+
+
+                {{ form.q3.label_tag }}
+
+                <br>
+                {% for pk, choice in form.q3.field.widget.choices %}
+                <div class="form-check form-check-inline mt-2">
+                    <input id="id_{{form.q3.name}}_{{ forloop.counter0 }}" name="{{form.q3.name}}"
+                        type="{{form.q3.field.widget.input_type}}" value="{{pk}}" class="form-check-input ms-2" />
+                    <label for="id_{{form.q3.name}}_{{ forloop.counter0 }}" class="custom-control-label ms-2">
+                        {{ choice }}
+                    </label>
+                </div>
+                {% endfor %}
+            </div>
+            <hr class="my-4">
+            <div class="mb-3">
+
+
+                {{ form.q4.label_tag }}
+
+                <br>
+                {% for pk, choice in form.q4.field.widget.choices %}
+                <div class="form-check form-check-inline mt-2">
+                    <input id="id_{{form.q4.name}}_{{forloop.counter0}}" name="{{form.q4.name}}"
+                        type="{{form.q4.field.widget.input_type}}" value="{{pk}}" class="ms-2 form-check-input" />
+                    <label for="id_{{form.q4.name}}_{{forloop.counter0}}" class="custom-control-label ms-2">
+                        {{ choice}}
+                    </label>
+                </div>
+                {% endfor %}
+            </div>
+            <hr class="my-4">
+            <div class="mb-3">
+
+
+                {{ form.q5.label_tag }}
+
+                <br>
+                {% for pk, choice in form.q5.field.widget.choices %}
+                <div class="form-check form-check-inline mt-2">
+                    <input id="id_{{form.q5.name}}_{{forloop.counter0}}" name="{{form.q5.name}}"
+                        type="{{form.q5.field.widget.input_type}}" value="{{pk}}" class="form-check-input ms-2" />
+                    <label for="id_{{form.q5.name}}_{{forloop.counter0}}" class="custom-control-label ms-2">
+                        {{choice}}
+                    </label>
+                </div>
+                {% endfor %}
+            </div>
+            <hr class="my-4">
+            <div class="mb-3">
+
+
+                {{ form.q6.label_tag }}
+
+                <br>
+                {% for pk, choice in form.q6.field.widget.choices %}
+                <div class="form-check form-check-inline mt-2">
+                    <input id="id_{{form.q6.name}}_{{forloop.counter0}}" name="{{form.q6.name}}"
+                        type="{{form.q6.field.widget.input_type}}" value="{{pk}}" class="form-check-input ms-2" />
+                    <label for="id_{{form.q6.name}}_{{forloop.counter0}}" class="custom-control-label ms-2">
+                        {{ choice }}</label>
+                </div>
+                {% endfor %}
+            </div>
+            <hr class="my-4">
+            <div class="mb-3">
+
+
+                {{ form.q7.label_tag }}
+
+                <br>
+                {% for pk, choice in form.q7.field.widget.choices %}
+                <div class="form-check form-check-inline mt-2">
+                    <input id="id_{{form.q7.name}}_{{forloop.counter0}}" name="{{form.q7.name}}"
+                        type="{{form.q7.field.widget.input_type}}" value="{{pk}}" class="form-check-input ms-2" />
+                    <label for="id_{{form.q7.name}}_{{forloop.counter0}}" class="custom-control-label">
+                        {{ choice}}
+                    </label>
+                </div>
+                {% endfor %}
+            </div>
+            <hr class="my-4">
+            <div class="mb-3">
+
+
+                {{ form.q8.label_tag }}
+
+                <br>
+                {% for pk, choice in form.q8.field.widget.choices %}
+                <div class="form-check form-check-inline mt-2">
+                    <input id="id_{{form.q8.name}}_{{forloop.counter0}}" name="{{form.q8.name}}"
+                        type="{{form.q8.field.widget.input_type}}" value="{{pk}}" class="form-check-input ms-2" />
+                    <label for="id_{{form.q8.name}}_{{forloop.counter0}}" class="custom-control-label ms-2">
+                        {{ choice}}
+                    </label>
+                </div>
+                {% endfor %}
+            </div>
+            <hr class="my-4">
+            <div class="mb-3">
+
+
+                {{ form.q9.label_tag }}
+
+                <br>
+                {% for pk, choice in form.q9.field.widget.choices %}
+                <div class="form-check form-check-inline mt-2">
+                    <input id="id_{{form.q9.name}}_{{forloop.counter0}}" name="{{form.q9.name}}"
+                        type="{{form.q9.field.widget.input_type}}" value="{{pk}}" class="ms-2 form-check-input" />
+                    <label for="id_{{form.q9.name}}_{{forloop.counter0}}" class="custom-control-label ms-2">
+                        {{ choice }}
+                    </label>
+                </div>
+                {% endfor %}
+            </div>
+
+            <hr class="my-4">
+            <div class="mb-3">
+
+
+                {{ form.q10.label_tag }}
+
+                <br>
+                {% for pk, choice in form.q10.field.widget.choices %}
+                <div class="form-check form-check-inline mt-2">
+                    <input id="id_{{form.q10.name}}_{{forloop.counter0}}" name="{{form.q10.name}}"
+                        type="{{form.q10.field.widget.input_type}}" value="{{pk}}" class="form-check-input ms-2" />
+                    <label for="id_{{form.q10.name}}_{{forloop.counter0}}" class="custom-control-label ms-2">
+                        {{choice}}
+                    </label>
+                </div>
+                {% endfor %}
+            </div>
+
+            <hr class="my-4">
+
+        </section>
+        <section class="text-center">
+            <div class="progress mb-4 mx-5 my-5" style="height: 20px;">
+                <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="25"
+                    aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <button type="submit"  class="btn btn-primary btn-lg " >Next</a>
+
+        </section>
+
+    </form>
+
+</div>
+
+
+
+{%endblock%}
+
+
+{%block script%}
+
+<script type="text/javascript">
+
+</script>
+
+{%endblock script %}
