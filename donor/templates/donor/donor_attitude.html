@@ -15,25 +15,13 @@
           project being conducted by James Yin, a student at University of Ghana, Computer Science Department.  It
           should take approximately 20 minutes to complete.  </p>
       </section>
-      
-  
-                <form class="needs-validation" method="POST">
-                 
-                    <section class="px-4">
-                        <h4 class="mt-3">Consent</h4>
-                        <hr class="my-4">
-                        <div class="form-check mb-3">
-                            <input type="checkbox" class="form-check-input" id="confirmation">
-                            <label class="form-check-label" for="confirmation">I have read the privacy statement and give consent for the use of my information in accordance with the terms</label>
-                        </div>
-                  </section>
+                <form  action="{%url 'donor:survey_attitude' %}" method="POST" novalidate>
+                 {%csrf_token %}
                 <section class="px-4">
-          
+
                 <div class="mb-3">
                     
-                   
                     {{ form.q1.label_tag }}
-
                     <br>
             {% for pk, choice in form.q1.field.widget.choices %}
             <div class="custom-control custom-radio custom-control-inline mt-2">
@@ -51,6 +39,12 @@
                     {%render_field form.q2 class="form-control mt-2" rows="3" %}
                 </div>
                 </div>
+                <div class="mb-3 row q4 d-none">
+                    {{ form.q4.label_tag }}
+                    <div class="col-6">
+                    {%render_field form.q4 class="form-control mt-2" rows="3" %}
+                </div>
+                </div>
 
                 <div class="mb-3 q3 d-none">
                     {{ form.q3.label_tag }}
@@ -65,12 +59,7 @@
                     </div>
                     {% endfor %}
                 </div>
-                <div class="mb-3 row q4 d-none">
-                    {{ form.q4.label_tag }}
-                    <div class="col-6">
-                    {%render_field form.q4 class="form-control mt-2" rows="3" %}
-                </div>
-                </div>
+                
 
                 <div class="mb-3 d-none q5">
                     {{ form.q5.label_tag }}
@@ -114,13 +103,13 @@
                 </div>
                 </div>
 
-                <div class="mb-3 row">
+                <div class="mb-3 row q9 d-none">
                     {{ form.q9.label_tag }}
                     <div class="col-6">
                     {%render_field form.q9 class="form-control mt-2" rows="3" %}
                 </div>
                 </div>
-                <div class="mb-3 row">
+                <div class="mb-3 row q10 d-none">
                     {{ form.q10.label_tag }}
                     <div class="col-6">
                     {%render_field form.q10 class="form-control mt-2" rows="3" %}
@@ -178,7 +167,7 @@
                 <div class="progress mb-4 mx-5" style="height: 20px;">
                     <div class="progress-bar bg-primary" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
-                  <button class="btn btn-info btn-lg " type="submit">Back</button>
+                  
                 <button class="btn btn-primary btn-lg " type="submit">Submit</button>
 
             </section>
@@ -200,12 +189,14 @@
         if (ischecked) {
             //$('#assoc-input').attr("required", "required");
             $('.q2').removeClass('d-none')
+            
             $('.q3').addClass('d-none')
             $('.q4').addClass('d-none')
-            $('.q5').addClass('d-none')
-            $('.q5').addClass('d-none')
+            //$('.q5').addClass('d-none')
             $('.q6').addClass('d-none')
             $('.q8').addClass('d-none')
+            $('.q9').addClass('d-none')
+            $('.q10').addClass('d-none')
         }
 
     });
@@ -220,6 +211,9 @@
             $('.q2').addClass('d-none')
             $('.q3').removeClass('d-none')
             $('.q4').removeClass('d-none')
+            $('.q9').removeClass('d-none')
+            $('.q8').removeClass('d-none')
+            $('.q10').removeClass('d-none')
             
 
         }

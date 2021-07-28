@@ -29,6 +29,7 @@ class Quiz(models.Model):
 class Question(models.Model):
     question_text = models.CharField(max_length=500)
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
+    long_text = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
 
 
@@ -37,7 +38,7 @@ class Question(models.Model):
 
     def get_choices(self):
         
-        return self.choice.all()
+        return self.choice_set.all()
 
 
 

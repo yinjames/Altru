@@ -1,6 +1,7 @@
 {%extends 'base.html' %}
 {%load static %}
 {% load widget_tweaks %}
+{% load crispy_forms_tags %}
 
 {%block content%}
 <div class="container mt-5 border py-4 px-0">
@@ -22,14 +23,7 @@
 
 
     <form  method="POST" >
-        {% if form.non_field_errors %}
-        <div class="alert alert-danger" role="alert">
-          {% for error in form.non_field_errors %}
-            <p{% if forloop.last %} class="mb-0"{% endif %}>{{ error }}</p>
-          {% endfor %}
-        </div>
-      {% endif %}
-      
+
         {%csrf_token%}
         {{ form.media }}
 
@@ -45,7 +39,7 @@
                 {% for pk, choice in form.gender.field.widget.choices %}
                 <div class="form-check form-check-inline mt-2">
                     <input id="id_{{form.gender.name}}_{{ forloop.counter0 }}" name="{{form.gender.name}}"
-                        type="{{form.gender.field.widget.input_type}}" value="{{pk}}" class="form-check-input ms-2" />
+                        type="{{form.gender.field.widget.input_type}}" value="{{pk}}" class="form-check-input ms-2" required />
                     <label for="id_{{form.gender.name}}_{{ forloop.counter0 }}" class="custom-control-label ms-2">
                         {{choice }}
                     </label>
@@ -64,7 +58,7 @@
                 <div class="form-check form-check-inline mt-2">
                     <input id="id_{{form.marital_status.name}}_{{ forloop.counter0 }}"
                         name="{{form.marital_status.name}}" type="{{form.marital_status.field.widget.input_type}}"
-                        value="{{pk}}" class="form-check-input ms-2" />
+                        value="{{pk}}" class="form-check-input ms-2" required />
                     <label for="id_{{form.marital_status.name}}_{{ forloop.counter0 }}"
                         class="custom-control-label ms-2">{{ choice }}</label>
                 </div>
@@ -82,7 +76,7 @@
                 <div class="form-check form-check-inline mt-2">
                     <input id="id_{{form.qualification.name}}_{{ forloop.counter0 }}" name="{{form.qualification.name}}"
                         type="{{form.qualification.field.widget.input_type}}" value="{{pk}}"
-                        class="form-check-input ms-2" />
+                        class="form-check-input ms-2" required />
                     <label for="id_{{form.qualification.name}}_{{ forloop.counter0 }}"
                         class="custom-control-label ms-2">{{ choice }}</label>
                 </div>
@@ -99,7 +93,7 @@
                 {% for pk, choice in form.q1.field.widget.choices %}
                 <div class="form-check form-check-inline mt-2">
                     <input id="id_{{form.q1.name}}_{{ forloop.counter0 }}" name="{{form.q1.name}}"
-                        type="{{form.q1.field.widget.input_type}}" value="{{pk}}" class="form-check-input ms-2" />
+                        type="{{form.q1.field.widget.input_type}}" value="{{pk}}" class="form-check-input ms-2" required />
                     <label for="id_{{form.q1.name}}_{{ forloop.counter0 }}" class="custom-control-label ms-2">
                         {{ choice}}
                     </label>
@@ -116,7 +110,7 @@
                 {% for pk, choice in form.q2.field.widget.choices %}
                 <div class="form-check form-check-inline mt-2">
                     <input id="id_{{form.q2.name}}_{{ forloop.counter0 }}" name="{{form.q2.name}}"
-                        type="{{form.q2.field.widget.input_type}}" value="{{pk}}" class="form-check-input ms-2" />
+                        type="{{form.q2.field.widget.input_type}}" value="{{pk}}" class="form-check-input ms-2" required />
                     <label for="id_{{form.q2.name}}_{{ forloop.counter0 }}" class="custom-control-label ms-2">
                         {{choice}}
                     </label>
@@ -133,7 +127,7 @@
                 {% for pk, choice in form.q3.field.widget.choices %}
                 <div class="form-check form-check-inline mt-2">
                     <input id="id_{{form.q3.name}}_{{ forloop.counter0 }}" name="{{form.q3.name}}"
-                        type="{{form.q3.field.widget.input_type}}" value="{{pk}}" class="form-check-input ms-2" />
+                        type="{{form.q3.field.widget.input_type}}" value="{{pk}}" class="form-check-input ms-2"  required />
                     <label for="id_{{form.q3.name}}_{{ forloop.counter0 }}" class="custom-control-label ms-2">
                         {{ choice }}
                     </label>
@@ -150,7 +144,7 @@
                 {% for pk, choice in form.q4.field.widget.choices %}
                 <div class="form-check form-check-inline mt-2">
                     <input id="id_{{form.q4.name}}_{{forloop.counter0}}" name="{{form.q4.name}}"
-                        type="{{form.q4.field.widget.input_type}}" value="{{pk}}" class="ms-2 form-check-input" />
+                        type="{{form.q4.field.widget.input_type}}" value="{{pk}}" class="ms-2 form-check-input md-2"  required />
                     <label for="id_{{form.q4.name}}_{{forloop.counter0}}" class="custom-control-label ms-2">
                         {{ choice}}
                     </label>
@@ -167,7 +161,7 @@
                 {% for pk, choice in form.q5.field.widget.choices %}
                 <div class="form-check form-check-inline mt-2">
                     <input id="id_{{form.q5.name}}_{{forloop.counter0}}" name="{{form.q5.name}}"
-                        type="{{form.q5.field.widget.input_type}}" value="{{pk}}" class="form-check-input ms-2" />
+                        type="{{form.q5.field.widget.input_type}}" value="{{pk}}" class="form-check-input ms-2" required />
                     <label for="id_{{form.q5.name}}_{{forloop.counter0}}" class="custom-control-label ms-2">
                         {{choice}}
                     </label>
@@ -184,7 +178,7 @@
                 {% for pk, choice in form.q6.field.widget.choices %}
                 <div class="form-check form-check-inline mt-2">
                     <input id="id_{{form.q6.name}}_{{forloop.counter0}}" name="{{form.q6.name}}"
-                        type="{{form.q6.field.widget.input_type}}" value="{{pk}}" class="form-check-input ms-2" />
+                        type="{{form.q6.field.widget.input_type}}" value="{{pk}}" class="form-check-input ms-2" required />
                     <label for="id_{{form.q6.name}}_{{forloop.counter0}}" class="custom-control-label ms-2">
                         {{ choice }}</label>
                 </div>
@@ -200,8 +194,8 @@
                 {% for pk, choice in form.q7.field.widget.choices %}
                 <div class="form-check form-check-inline mt-2">
                     <input id="id_{{form.q7.name}}_{{forloop.counter0}}" name="{{form.q7.name}}"
-                        type="{{form.q7.field.widget.input_type}}" value="{{pk}}" class="form-check-input ms-2" />
-                    <label for="id_{{form.q7.name}}_{{forloop.counter0}}" class="custom-control-label">
+                        type="{{form.q7.field.widget.input_type}}" value="{{pk}}" class="form-check-input ms-2" required />
+                    <label for="id_{{form.q7.name}}_{{forloop.counter0}}" class="custom-control-label ms-2">
                         {{ choice}}
                     </label>
                 </div>
@@ -217,7 +211,7 @@
                 {% for pk, choice in form.q8.field.widget.choices %}
                 <div class="form-check form-check-inline mt-2">
                     <input id="id_{{form.q8.name}}_{{forloop.counter0}}" name="{{form.q8.name}}"
-                        type="{{form.q8.field.widget.input_type}}" value="{{pk}}" class="form-check-input ms-2" />
+                        type="{{form.q8.field.widget.input_type}}" value="{{pk}}" class="form-check-input ms-2" required />
                     <label for="id_{{form.q8.name}}_{{forloop.counter0}}" class="custom-control-label ms-2">
                         {{ choice}}
                     </label>
@@ -234,7 +228,7 @@
                 {% for pk, choice in form.q9.field.widget.choices %}
                 <div class="form-check form-check-inline mt-2">
                     <input id="id_{{form.q9.name}}_{{forloop.counter0}}" name="{{form.q9.name}}"
-                        type="{{form.q9.field.widget.input_type}}" value="{{pk}}" class="ms-2 form-check-input" />
+                        type="{{form.q9.field.widget.input_type}}" value="{{pk}}" class="ms-2 form-check-input" required />
                     <label for="id_{{form.q9.name}}_{{forloop.counter0}}" class="custom-control-label ms-2">
                         {{ choice }}
                     </label>
@@ -252,7 +246,7 @@
                 {% for pk, choice in form.q10.field.widget.choices %}
                 <div class="form-check form-check-inline mt-2">
                     <input id="id_{{form.q10.name}}_{{forloop.counter0}}" name="{{form.q10.name}}"
-                        type="{{form.q10.field.widget.input_type}}" value="{{pk}}" class="form-check-input ms-2" />
+                        type="{{form.q10.field.widget.input_type}}" value="{{pk}}" class="form-check-input ms-2"  required />
                     <label for="id_{{form.q10.name}}_{{forloop.counter0}}" class="custom-control-label ms-2">
                         {{choice}}
                     </label>
@@ -288,3 +282,6 @@
 </script>
 
 {%endblock script %}
+
+
+     

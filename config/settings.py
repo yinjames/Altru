@@ -30,7 +30,12 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'crispy_forms',
     'multiselectfield',
+    
 ]
+
+#CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
