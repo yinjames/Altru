@@ -1,6 +1,10 @@
 from django.db import models
+from django.db.models.fields.related import ForeignKey
 from multiselectfield import MultiSelectField
 import uuid
+from django.db.models.signals import post_delete, pre_save, post_save, pre_delete
+from django.dispatch import receiver
+from django.contrib.auth.models import User
 
 from functools import partial as curry
 YES_NO = (
@@ -46,6 +50,95 @@ MARITAL_STATUS = (
     (2, 'Married'),
     (3, 'Divorced')
 )
+
+
+
+
+
+class Team(models.Model):
+    name = models.CharField(max_length=100)
+    user = models.OneToOneField(User, null=True, on_delete=models.SET_NULL)
+
+    def get_team_points(self):
+        
+        champs = self.champion_set.all()
+
+        points = 0
+        for c in champs:
+            points += c.points
+        return points
+
+
+    def __str__(self):
+       return self.name
+class Champion(models.Model):
+ 
+    id = models.UUIDField(editable=False, unique=True,default=uuid.uuid4, primary_key=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    sponsor = models.ForeignKey('self', null=True, blank=True,on_delete=models.SET_NULL)
+    level = models.IntegerField(default=0)
+    team = models.ForeignKey(Team, null=True, blank=True, on_delete=models.SET_NULL)
+    date_created = models.DateField(auto_now_add=True)
+    points = models.IntegerField(default=0)
+    def __str__(self):
+        return str(self.id)
+
+
+
+@receiver(pre_delete, sender=Champion)
+def auto_reassign_sponsored_on_champion_delete(sender, instance, **kwargs):
+        sponsor = instance.sponsor
+
+        sponsored =sender.objects.filter(sponsor=instance)
+
+
+
+        if sponsored:
+            if Team.objects.get(user=instance.user):
+                my_team = Team.objects.get(user=instance.user)
+                new_team_lead = sponsored.order_by('-date_created')[0]
+                my_team.user = new_team_lead
+                my_team.save()
+            if sponsor:
+                for sp in sponsored:
+                    sp.sponsor = sponsor
+                    sp.level = sponsor.level + 1
+                    sp.save()
+            else:
+                for sp in sponsored:
+                    sp.sponsor = None
+                    sp.level = 1
+                    sp.save()
+
+
+
+@receiver(post_save, sender=Champion)
+def auto_reassign_sponsor(sender, instance, created, **kwargs):
+        
+        sponsor = instance.sponsor
+
+        sponsored =sender.objects.filter(sponsor=instance)
+        if sponsored:
+            if sponsor:
+                for sp in sponsored:
+                    sp.sponsor = sponsor
+                    sp.level  = sponsor.level + 1
+                    sp.save()
+            else:
+                for sp in sponsored:
+                    sp.sponsor = None
+                    sp.level = 0
+                    sp.save()
+
+
+
+@receiver(post_save, sender=Champion)
+def auto_reassign_sponsor(sender, instance, created,  **kwargs):
+        if created:
+            sponsor = instance.sponsor
+            if sponsor:
+                instance.level  = sponsor.level + 1
+                instance.save()
 
 
 

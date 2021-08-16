@@ -1,0 +1,67 @@
+{%extends 'base.html' %}
+{%load static %}
+{%block content%}
+
+
+<section class="text-center text-sm-start pt-0 mt-0">
+
+    <div class="row ">
+        <div class="col-md-3 bg-primary ">
+
+        </div>
+        <div class="col-md-3 ps-5 bg-primary text-white" style="min-height: 1200px;">
+            <div class="row mb-5">
+                <h2>Profile</h2>
+                <hr class="my-2">
+                <a href="" class="text-white mb-2">Statistics</a>
+                <a href="" class="text-white mb-2">Team Statistics</a>
+                <a href="" class="text-white mb-2">Leaderboard</a>
+            </div>
+            <div class="row mb-5">
+                <h2>Quizes</h2>
+                <hr class="my-2">
+                {%for quiz in quiz_list%}
+                <a href="" class="text-white mb-2">{{quiz.name}}</a>
+                {%endfor%}
+            </div>
+            <div class="row">
+                <hr class="my-4">
+            </div>
+        </div>
+        <div class="col-md-4 p-5">
+            <div class="row ">
+
+                <h1 class="text-lead">My Team</h1>
+              
+                <form action="{%url 'donor:create_team' %}" method="post">
+                    {%csrf_token%}
+                  
+                   <div class="mb-3">
+                    <label for="team_name" class="form-label">Team name</label>
+                    <input type="text" class="form-control" id="team_name" >
+                    <div id="teamHelp" class="form-text">This name wil be seen by anybody who visit the website.</div>
+                  </div>
+
+                  <button type="submit" class="btn btn-info">Create</button>
+                </form>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{%endblock content %}

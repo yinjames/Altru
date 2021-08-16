@@ -102,7 +102,7 @@ class DonorAttitudeForm(ModelForm):
     q9 = forms.CharField(label='In your opinion, what causes people not to donate organs?', max_length=100, widget=forms.Textarea, required=False) 
     q10 = forms.CharField(label='What do you think of the methods to increase consent for donation? ', max_length=100, widget=forms.Textarea, required=False) 
     q11 = forms.IntegerField(label='Do you know someone who has given consent to donate after death?', widget=forms.RadioSelect(choices=YES_NO))   
-    q12 = forms.IntegerField(label='Are you willing to give consent to donate after death?', widget=forms.RadioSelect(choices=YES_NO), required=False)  
+    q12 = forms.IntegerField(label='Are you willing to give consent to donate your organs after death?', widget=forms.RadioSelect(choices=YES_NO), required=False)  
     q13 = forms.CharField(label='If no, why? ', max_length=100, widget=forms.Textarea, required=False) 
     q14 = forms.IntegerField(label='If you have a family member who is a brain-dead, would you consent to donate his/her organs?', widget=forms.RadioSelect(choices=YES_NO)) 
     

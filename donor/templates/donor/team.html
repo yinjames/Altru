@@ -1,0 +1,52 @@
+{%extends 'base.html' %}
+{%load static %}
+{% load widget_tweaks %}
+{% load crispy_forms_tags %}
+
+{%block content%}
+<div class="container mt-5 border py-4 px-0 shadow rounded">
+
+    <i class="fas fa-heartbeat text-primary px-4 d-block mx-auto mb-4 display-4"></i>
+
+    <section class="mx-0 p-4 bg-primary text-white mb-4 border-0">
+        <h1>Donor Statistics</h1>
+    </section>
+
+
+  <section class="p-4">
+    <table class="table table-bordered border-primary">
+        <thead>
+            <tr>
+                <th scope="col">Rank</th>
+                <th scope="col">Team Name</th>
+                <th scope="col">Life Points</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {%for team in team_list%}
+            <tr>
+                <th scope="row">{{forloop.counter}}</th>
+                <td>{{team.name}}</td>
+                <td>{{team.get_team_points}}</td>
+                
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+
+  </section>
+</div>
+
+
+
+{%endblock%}
+
+
+{%block script%}
+
+<script type="text/javascript">
+
+</script>
+
+{%endblock script %}

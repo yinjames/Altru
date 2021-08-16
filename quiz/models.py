@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 #from django.template.defaultfilters import slugify
 from django.utils.text import slugify
-
+import uuid
 class Quiz(models.Model):
     name = models.CharField(max_length=200)
     topic = models.CharField(max_length=200)
@@ -27,7 +27,7 @@ class Quiz(models.Model):
         return f"{self.topic}-{self.name}"
 
 class Question(models.Model):
-    question_text = models.CharField(max_length=500)
+    question_text = models.CharField(max_length=1000)
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
     long_text = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
@@ -52,9 +52,10 @@ class Choice(models.Model):
         return self.choice_text
 
 
-class Result(models.Model):
+class QuizScore(models.Model):
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
-    user = models.ForeignKey(User,  on_delete=models.CASCADE)
+    #user = models.ForeignKey(User,  on_delete=models.CASCADE)
+    visitor_id = models.UUIDField(blank=True, null=True, editable=False, unique=True)
     score = models.FloatField()
 
     def __str__(self):

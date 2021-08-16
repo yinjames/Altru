@@ -24,16 +24,49 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.sites',
     'django.contrib.staticfiles',
     'quiz',
     'donor',
     'widget_tweaks',
     'crispy_forms',
     'multiselectfield',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google'
+
+    
     
 ]
+SITE_ID = 1
 
-#CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}
+
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True
+#ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_USERNAME_REQUIRED = False
+
+ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 5
+ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 86400
+ACCOUNT_LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/'
+ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
+
+
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 
@@ -52,9 +85,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-             os.path.join(BASE_DIR, 'templates'),
-        ],
+        'DIRS': [ os.path.join(BASE_DIR, "templates")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -66,6 +97,17 @@ TEMPLATES = [
         },
     },
 ]
+
+AUTHENTICATION_BACKENDS = [
+   
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
@@ -114,8 +156,14 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.2/howto/static-files/
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'jyin@nabptex.gov.gh'  # 'jamesyinbaare@gmail.com'
+# 'zgaaxaqyyszarbae' #'kzjbqhbfkhmgjqzu' #'T3$l@.1234'
+EMAIL_HOST_PASSWORD = 'pdfzrmozlzomfdhy'
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
 
 STATIC_URL = '/static/'
 
@@ -133,3 +181,6 @@ MEDIA_URL = '/media/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#clientID=60711506863-8nqmvhi9d40a9dq9uq7qj5tu9rp3gh6i.apps.googleusercontent.com
+#secret=I3KnZXLbK45ml-0b9FG5Ipkh

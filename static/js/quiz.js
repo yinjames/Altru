@@ -144,7 +144,7 @@ $(document).on("click", ".ans", function () {
         score = parseInt($('#quiz').attr("score"))
         score = score + 100
         $('#quiz').attr("score", score)
-        sleep(2000).then(nextQuestion)
+        sleep(1000).then(nextQuestion)
         
     } else {
         $(this).css({ "backgroundColor": "red" });
