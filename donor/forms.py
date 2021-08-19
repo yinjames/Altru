@@ -1,7 +1,7 @@
 from django.forms import ModelForm
 from django import forms
 #from django.forms.models import model_to_dict
-from . models import DonorAttitude, DonorKnowledge
+from . models import DonorAttitude, DonorKnowledge, Team
 
 
 YES_NO = (
@@ -54,6 +54,12 @@ MARITAL_STATUS = (
     (3, 'Divorced')
 )
 
+
+class TeamForm(ModelForm):
+
+    class Meta:
+        model = Team
+        fields = ('team_name',)
 
 class DonorKnowledgeForm(ModelForm):
 

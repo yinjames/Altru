@@ -56,7 +56,7 @@ MARITAL_STATUS = (
 
 
 class Team(models.Model):
-    name = models.CharField(max_length=100)
+    team_name = models.CharField(max_length=100, unique=True)
     user = models.OneToOneField(User, null=True, on_delete=models.SET_NULL)
 
     def get_team_points(self):
@@ -70,7 +70,9 @@ class Team(models.Model):
 
 
     def __str__(self):
-       return self.name
+       return self.team_name
+
+
 class Champion(models.Model):
  
     id = models.UUIDField(editable=False, unique=True,default=uuid.uuid4, primary_key=True)

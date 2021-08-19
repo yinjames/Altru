@@ -1,0 +1,32 @@
+{%extends 'donor/profile.html' %}
+{%load static %}
+{%block partial%}
+<div class="col-md-6 p-5">
+    <div class="row ">
+        
+        <section class="p-4">
+            <table class="table table-bordered border-primary">
+                <thead>
+                    <tr>
+                        <th scope="col">Rank</th>
+                        <th scope="col">Champions</th>
+                        <th scope="col">Life Points</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for champ in team_members%}
+                    <tr>
+                        <th scope="row">{{forloop.counter}}</th>
+                        <td>{{champ.user}}</td>
+                        <td>{{champ.points}}</td>
+                        
+                    </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+        
+          </section>
+        
+</div>
+{%endblock partial%}

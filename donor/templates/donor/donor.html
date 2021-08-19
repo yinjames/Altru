@@ -13,29 +13,7 @@
     </section>
 
 
-  <section class="p-4">
-    <table class="table table-bordered border-primary">
-        <thead>
-            <tr>
-                <th scope="col">Rank</th>
-                <th scope="col">Champion Name</th>
-                <th scope="col">Life Points</th>
-                
-            </tr>
-        </thead>
-        <tbody>
-            {%for champ in champ_list%}
-            <tr>
-                <th scope="row">{{forloop.counter}}</th>
-                <td>{{champ.user}}</td>
-                <td>{{champ.points}}</td>
-                
-            </tr>
-            {%endfor%}
-        </tbody>
-    </table>
-
-  </section>
+ 
 </div>
 
 

@@ -88,28 +88,18 @@
       </button>
       <div class="collapse navbar-collapse text-white" id="navmenu">
         <ul class="navbar-nav ms-auto text-white">
-          <li class="nav-item">
-            <a href="{%url 'donor:donor_stats' %}" class="nav-link text-white text-center">
-              <i class="fas fa-heartbeat  d-block mx-auto mb-1 display-6"></i>
-              Donors
-            </a>
-          </li>
+         
           <li class="nav-item">
             <a href="#" class="nav-link text-white text-center">
               <i class="fas fa-hands d-block mx-auto mb-1 display-6"></i>
               Stories
             </a>
           </li>
+        
           <li class="nav-item">
-            <a href="#" class="nav-link text-white text-center">
-              <i class="far fa-star d-block mx-auto mb-1 display-6"></i>
-              Badges
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{%url 'donor:team_stats' %}" class="nav-link text-white text-center">
+            <a href="{%url 'donor:champion_stats' %}" class="nav-link text-white text-center">
               <i class="fas fa-chart-bar d-block mx-auto mb-1 display-6"></i>
-              Leaderboard
+              Champions
             </a>
           </li>
 
@@ -157,7 +147,7 @@
       $('#surveyModal').modal('show')
       console.log($('#surveyModal'))
     });
-
+    tooltip.enable()
   </script>
 
   {%block script%}

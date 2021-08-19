@@ -1,0 +1,65 @@
+{%extends 'donor/profile.html' %}
+{%load static %}
+{%block partial%}
+<div class="col-md-6 p-5">
+    <div class="row ">
+
+        <h1 class="text-lead">Statistics</h1>
+        <p>One of the best ways to help save more lives is by encouraging your friends and family. Start by
+            sharing your special link with them. Then join a team or even start your own team. The more points
+            your team earns, the closer we come to saving more lives.</p>
+        <p>
+            On this page you will find access to statistics for individuals and teams who have joined together
+            to earn points and compete with other teams.
+        </p>
+        <h1 class="text-lead">How to earn points</h1>
+        <ol class="ms-5">
+            <li>You earn points by becoming a champion</li>
+            <li>You earn points from the scores of the quizes you take</li>
+            <li>You earn points when friends and family follow your link to complete any activity on the site</li>
+            <li>Individual points sum up to become team points</li>
+        </ol>
+    </div>
+
+    <div class="row text-center mt-4">
+        <h1 class="fs-1">MAXIMIZE YOUR <span class="text-primary">EFFORT</span></h1>
+    </div>
+    <div class="d-flex justify-content-evenly mt-4">
+        {%if not has_team %}
+        <a href="{%url 'donor:create_team' %}" class="btn btn-warning btn-lg">START A TEAM</a>
+        {%endif%}
+    </div>
+
+    <div class="row mt-3 g-2">
+        <div class="col-9">
+          <input type="text" class="form-control" id="invite-link" value="{{invite_url}}" disabled>
+        </div>
+        <div class="col-3">
+          <button type="submit" class="btn btn-primary mb-3" id="copy-link" data-bs-toggle="tooltip" data-bs-placement="top" title="Click to copy link" >INVITE FRIENDS</button>
+        </div>
+    </div>
+
+</div>
+
+{%endblock partial%}
+
+{%block script%}
+<script>
+
+    $('#copy-link').click(function () {
+        console.log("invite button clicked!!")
+        /* Get the text field */
+        var copyText = $("#invite-link");
+
+        /* Select the text field */
+        copyText.select();
+        document.execCommand("copy");
+        //copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+        /* Copy the text inside the text field */
+        //navigator.clipboard.writeText(copyText.value);
+       
+    })
+   
+</script>
+{%endblock script %}
