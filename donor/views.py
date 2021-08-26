@@ -107,6 +107,7 @@ def profile_home(request):
     if Team.objects.filter(user=request.user).exists() or request.user.champion.team:
         has_team = True
 
+    invite_url = reverse("donor:home", kwargs={'sponsor':request.user.champion.id} )
     return render(request, 'donor/partials/profile_home.html', {'has_team':has_team, 'quiz_list':quiz_list, 'invite_url':invite_url})
 
 

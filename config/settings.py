@@ -13,7 +13,7 @@ SECRET_KEY = 'django-insecure-^+3t04k=&1)i93m1erk2rv#5f+8a@_@z#7h!pjt86z#_qr+buo
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'crispy_forms',
     'multiselectfield',
+    'django_social_share',
 
     'allauth',
     'allauth.account',

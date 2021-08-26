@@ -1,5 +1,6 @@
 {%extends 'donor/profile.html' %}
 {%load static %}
+{% load social_share %}
 {%block partial%}
 <div class="col-md-6 p-5">
     <div class="row ">
@@ -37,6 +38,7 @@
         <div class="col-3">
           <button type="submit" class="btn btn-primary mb-3" id="copy-link" data-bs-toggle="tooltip" data-bs-placement="top" title="Click to copy link" >INVITE FRIENDS</button>
         </div>
+        {% post_to_facebook invite_url  "Share on Facebook!" %}
     </div>
 
 </div>
