@@ -31,14 +31,26 @@
         {%endif%}
     </div>
 
-    <div class="row mt-3 g-2">
-        <div class="col-9">
-          <input type="text" class="form-control" id="invite-link" value="{{invite_url}}" disabled>
-        </div>
-        <div class="col-3">
-          <button type="submit" class="btn btn-primary mb-3" id="copy-link" data-bs-toggle="tooltip" data-bs-placement="top" title="Click to copy link" >INVITE FRIENDS</button>
+    <div class="row mt-3 g-2 px-auto">
+        
+        <div class="d-flex flex-row "> 
+        <div class="whatsapp-this">
+           <button class="btn btn-primary">Invite friends</button>
         </div>
         {% post_to_facebook invite_url  "Share on Facebook!" %}
+      
+        {% post_to_twitter "Share on Facebook!" %}
+        
+        {% post_to_linkedin "Share on Facebook!" %}           
+        
+        {% post_to_reddit "Share on Facebook!" %}  
+               
+        {% post_to_telegram "Share on Facebook!" %} 
+                
+        {% post_to_whatsapp "Share on Facebook!" %}
+        </div>
+        
+            
     </div>
 
 </div>
