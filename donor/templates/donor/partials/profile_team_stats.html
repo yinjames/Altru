@@ -18,7 +18,13 @@
                     {%for champ in team_members%}
                     <tr>
                         <th scope="row">{{forloop.counter}}</th>
+                        {%if request.user == champ.user%}
+                        <td>{{champ.user}} <span class="badge rounded-pill bg-success text-light"><i class="far fa-check-circle"></i></span></td>
+                        
+                        {%else%}
                         <td>{{champ.user}}</td>
+                        {%endif%}
+                        
                         <td>{{champ.points}}</td>
                         
                     </tr>

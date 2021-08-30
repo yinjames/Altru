@@ -57,6 +57,7 @@ def champion_stats(request):
 @login_required
 def create_team(request):
     user=request.user
+    champ = request.user.champion
     team_list = Team.objects.all()
     if request.method == 'POST':
         form = TeamForm(request.POST)
@@ -64,8 +65,9 @@ def create_team(request):
         if form.is_valid():
             team_name = form.cleaned_data['team_name']
             team = Team.objects.create(team_name=team_name, user=user)
-
-            print("Team created!!")
+            champ.team = team
+            champ.save()
+            print("Team created!!", user, team)
             return redirect('donor:profile')
 
         else:
@@ -122,8 +124,7 @@ def profile_stats(request):
 
 @login_required
 def profile_team_stats(request):
-   
-    
+       
     if request.user.champion.team:
        team_members = Champion.objects.filter(team=request.user.champion.team)
     else:

@@ -2,6 +2,7 @@
 
 {% load i18n %}
 {% load widget_tweaks %}
+{% load socialaccount %}
 
 {% block head_title %}{% trans "Signup" %}{% endblock %}
 
@@ -11,31 +12,33 @@
     <div class="col-md-4"></div>
     <div class="col-md-4 p-4">
       <div class="border shadow p-3">
-      <h4>Sign up with email address</h4>
+      <h4 class="mb-3">Sign up with email address</h4>
 
-      <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}
-      </p>
+      <div class="d-grid gap-2 col-10 mx-auto">
+      <a href="{% provider_login_url 'google' %}" class="btn btn-outline-primary p-3"> <i class="fab fa-google"></i> Sign up with Google</a>
+
+      <div class="login-or text-center my-2">or</div>
 
       <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
         {% csrf_token %}
         <div class="d-grid gap-2 col-10 mx-auto">
         <div class="mb-2">
           <label for="login" class="form-label">Email*</label>
-          {%render_field form.email class="form-control" %}
+          {%render_field form.email class="form-control form-control-lg" %}
         </div>
         <div class="mb-2">
           <label for="password" class="form-label">Confirm Email*</label>
-          {%render_field form.email2 class="form-control" %}
+          {%render_field form.email2 class="form-control form-control-lg" %}
         </div>
 
 
         <div class="mb-2">
           <label for="login" class="form-label">Password*</label>
-          {%render_field form.password1 class="form-control" %}
+          {%render_field form.password1 class="form-control form-control-lg" %}
         </div>
         <div class="mb-2">
           <label for="password" class="form-label">Confirm Password*</label>
-          {%render_field form.password2 class="form-control" %}
+          {%render_field form.password2 class="form-control form-control-lg" %}
         </div>
 
         {% if redirect_field_value %}
@@ -48,6 +51,7 @@
     <div class="col-md-4"></div>
   </div>
   </div>
+</div>
 </div>
 
 
