@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'multiselectfield',
     'django_social_share',
+    'django_bitly',
 
     'allauth',
     'allauth.account',

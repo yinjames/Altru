@@ -188,7 +188,9 @@ class DonorAttitude(models.Model):
     q11 = models.SmallIntegerField(choices=YES_NO) #Do you know someone who has given consent to donate after death?   
     q12 = models.SmallIntegerField(choices=YES_NO) #Are you willing to give consent to donate after death? 
     q13 = models.CharField(max_length=200, blank=True, null=True) #If no, why? 
-    q14 = models.SmallIntegerField(choices=YES_NO) #If you have a family member who is a brain-dead, would you consent to donate his/her organs? 
-
+    q14 = models.SmallIntegerField(choices=YES_NO) #If you have a family member who is a brain-dead, would you consent to donate his/her organs?
+    
+    # This is only used when a person negative attitude 
+    q15 = models.SmallIntegerField(blank=True, null=True) #will you give consent if you're prioritize for organ allocation
     def __str__(self):
         return str(self.visitor_id)

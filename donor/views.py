@@ -18,24 +18,22 @@ def get_url(request, d_url):
     url = f"http://{domain}{path}{id}/"
     return url
 
+
+def hero(request):
+    
+    return render(request, 'greetings.html', {})
+
+
 def home(request, *args, **kwargs):
     sponsor = str(kwargs.get('sponsor'))
     #request.session.get('has_taken_survey', False)
-       
+    request.session['has_given_consent'] = False   
     if sponsor:
         request.session['sponsor']  = sponsor
-        print("Sponsor: {0}".format(sponsor))
 
-    num_visits = request.session.get('num_visits', 0)
-    visitor_id = get_visitor_id(request)
-    print(request.session.keys())
-    print("Visitor ID: {0}".format(visitor_id))
-    request.session['num_visits'] = num_visits + 1
-    
-
-  
     taken_survey = request.session.get('has_taken_survey')
     given_consent = request.session.get('has_given_consent')
+    
     
     return render(request, "home.html", {'has_taken_survey':taken_survey, 'has_given_consent':given_consent})
 
@@ -211,6 +209,13 @@ def donor_knowledge(request):
        
             return render(request, "donor/donor_knowledge.html", {'form':form})
 
+
+def prioity_prompt(request, *args, **kwargs):
+    ans = int(kwargs.get('ans'))
+    donor_attitude = request.user.donorattitude
+    donor_attitude.q15 = ans
+    donor_attitude.save()
+    return redirect('/')
 
 def get_visitor_id(request):
     #visitor_id =  None 

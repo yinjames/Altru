@@ -1,0 +1,55 @@
+{%extends 'base.html' %} {%load static %} {% load widget_tweaks %} {% load
+crispy_forms_tags %} {%block style %}
+
+<style>
+  #hero {
+    min-height: 100vh;
+    padding: 30px 0 60px;
+    padding: 30px 0 var(--main-spacing, 60px);
+    background: linear-gradient(-45deg, #814efa, #593196, #341f52);
+    background-size: 300% 300%;
+    animation: gradient 5s ease infinite;
+    color: #fff;
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: futura-pt-condensed, sans-serif;
+    font-weight: 800;
+  }
+
+  @media (min-width: 998px) {
+    #hero h1 {
+      margin-top: 110px;
+      margin-bottom: 70px;
+      font-size: 250px;
+      line-height: 1;
+    }
+  }
+</style>
+{%endblock %} {%block content%}
+<div class="" id="hero">
+<div class="d-flex justify-content-end text-white">
+<a href="{%url 'donor:home' %}" class="text-white me-3">TAKE ME HOME</a>
+</div>
+
+  <h1 style="text-align: center; text-transform: uppercase; ">One Voice, To Save and Heal Lives</h1>
+    <h4 style="text-align: center;">Why should I register?</h4>
+    <div class="container">
+
+    <div class="row" style="text-align:center">
+        <div class="col-md-4">
+        <p>another person is added to the waiting list every 10 minutes</p>
+        </div>
+        <div class="col-md-4"></div>
+        <div class="col-md-4"></div>
+    </div>
+    </div>
+    
+</div>
+
+{%endblock%} {%block script%}
+
+<script type="text/javascript"></script>
+
+{%endblock script %}

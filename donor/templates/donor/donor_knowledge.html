@@ -110,7 +110,7 @@
                 {% for pk, choice in form.q2.field.widget.choices %}
                 <div class="form-check form-check-inline mt-2">
                     <input id="id_{{form.q2.name}}_{{ forloop.counter0 }}" name="{{form.q2.name}}"
-                        type="{{form.q2.field.widget.input_type}}" value="{{pk}}" class="form-check-input ms-2" required />
+                        type="{{form.q2.field.widget.input_type}}" value="{{pk}}" class="form-check-input ms-2" />
                     <label for="id_{{form.q2.name}}_{{ forloop.counter0 }}" class="custom-control-label ms-2">
                         {{choice}}
                     </label>

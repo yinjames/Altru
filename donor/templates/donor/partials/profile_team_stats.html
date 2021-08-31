@@ -11,7 +11,7 @@
                         <th scope="col">Rank</th>
                         <th scope="col">Champions</th>
                         <th scope="col">Life Points</th>
-                        
+                    
                     </tr>
                 </thead>
                 <tbody>
@@ -19,7 +19,7 @@
                     <tr>
                         <th scope="row">{{forloop.counter}}</th>
                         {%if request.user == champ.user%}
-                        <td>{{champ.user}} <span class="badge rounded-pill bg-success text-light"><i class="far fa-check-circle"></i></span></td>
+                        <td>{{champ.user}} <i class="far fa-check-circle text-success"></i></td>
                         
                         {%else%}
                         <td>{{champ.user}}</td>
