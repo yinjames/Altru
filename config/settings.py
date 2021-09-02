@@ -42,12 +42,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.facebook',
-    
-    #'dj-database-url',
-    #'django-heroku',
-    #'gunicorn',
-    #'psycopg2',
-    #'python-decouple',
+
     'whitenoise',
 
     
