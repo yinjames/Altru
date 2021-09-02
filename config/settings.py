@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'allauth.socialaccount.providers.google'
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.facebook'
 
     
     
@@ -53,7 +54,30 @@ SOCIALACCOUNT_PROVIDERS = {
         'AUTH_PARAMS': {
             'access_type': 'online',
         }
-    }
+    },
+      'facebook': {
+        'METHOD': 'oauth2',
+        'SCOPE': ['email', 'public_profile', 'user_friends'],
+        'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
+        'INIT_PARAMS': {'cookie': True},
+        'FIELDS': [
+            'id',
+            'email',
+            'name',
+            'first_name',
+            'last_name',
+            'verified',
+            'locale',
+            'timezone',
+            'link',
+            'gender',
+            'updated_time',
+        ],
+        'EXCHANGE_TOKEN': True,
+        'LOCALE_FUNC': 'path.to.callable',
+        'VERIFIED_EMAIL': False,
+        'VERSION': 'v2.12',
+    },
 }
 
 ACCOUNT_ADAPTER = 'donor.adapter.MyAccountAdapter'
@@ -66,8 +90,8 @@ ACCOUNT_USERNAME_REQUIRED = False
 
 ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 5
 ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 86400
-ACCOUNT_LOGOUT_REDIRECT_URL = '/'
-LOGIN_REDIRECT_URL = '/'
+ACCOUNT_LOGOUT_REDIRECT_URL = '/home/'
+LOGIN_REDIRECT_URL = '/home/'
 ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
 #ACCOUNT_SIGNUP_REDIRECT_URL = "donor/profile/"
 
@@ -188,3 +212,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #clientID=60711506863-8nqmvhi9d40a9dq9uq7qj5tu9rp3gh6i.apps.googleusercontent.com
 #secret=I3KnZXLbK45ml-0b9FG5Ipkh
+
+#f 326306065948379  83d7791260f100b12b261496af0589f0

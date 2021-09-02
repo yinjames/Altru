@@ -1,7 +1,8 @@
+from django.db.models.base import Model
 from django.forms import ModelForm
 from django import forms
 #from django.forms.models import model_to_dict
-from . models import DonorAttitude, DonorKnowledge, Team
+from . models import DonorAttitude, DonorKnowledge, Team, Story
 
 
 YES_NO = (
@@ -54,6 +55,11 @@ MARITAL_STATUS = (
     (3, 'Divorced')
 )
 
+
+class StoryForm(ModelForm):
+    class Meta:
+        model = Story
+        exclude = ('champion',)
 
 class TeamForm(ModelForm):
 

@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from quiz.models import Quiz
 from django.contrib.sites.models import Site
 from django.urls import reverse
-
+from django.contrib.auth.models import User
 
 def get_url(request, d_url):
     #domain = Site.objects.get_current().domain
@@ -27,14 +27,14 @@ def hero(request):
 def home(request, *args, **kwargs):
     sponsor = str(kwargs.get('sponsor'))
     #request.session.get('has_taken_survey', False)
-    request.session['has_given_consent'] = False   
+    #request.session['has_given_consent'] = False   
     if sponsor:
         request.session['sponsor']  = sponsor
 
     taken_survey = request.session.get('has_taken_survey')
     given_consent = request.session.get('has_given_consent')
     
-    
+    print(given_consent)
     return render(request, "home.html", {'has_taken_survey':taken_survey, 'has_given_consent':given_consent})
 
 
@@ -108,7 +108,7 @@ def profile_home(request):
         has_team = True
 
     invite_url = reverse("donor:home", kwargs={'sponsor':request.user.champion.id} )
-    return render(request, 'donor/partials/profile_home.html', {'has_team':has_team, 'quiz_list':quiz_list, 'invite_url':invite_url})
+    return render(request, 'donor/partials/profile_home.html', {'has_team':has_team, 'quiz_list':quiz_list, 'object_or_url':invite_url})
 
 
 @login_required
@@ -134,7 +134,16 @@ def profile_team_stats(request):
 
     return render(request, 'donor/partials/profile_team_stats.html', { 'quiz_list':quiz_list, 'team_members':team_members, 'team':request.user.champion.team})
 
+def donor_badge(request, donor_id):
+    
+   
+    donor = User.objects.get(id=donor_id)
+    
+    return render(request, "donor/donor_badge.html",{'donor':donor})
 
+def story_list(request):
+    
+    return render(request, 'donor/story_list.html')
 
 
 def enrollment(request):
@@ -159,7 +168,7 @@ def donor_attitude(request):
             if survey.q12:
                 request.session['has_given_consent'] = True
                 print("Willing to give consent")
-            return redirect('/')
+            return redirect('donor:home')
         else:
             for er in form.errors:
                 print(er)
@@ -211,11 +220,18 @@ def donor_knowledge(request):
 
 
 def prioity_prompt(request, *args, **kwargs):
+    visitor_id = get_visitor_id(request)
     ans = int(kwargs.get('ans'))
-    donor_attitude = request.user.donorattitude
+    donor_attitude = DonorAttitude.objects.get(visitor_id=visitor_id)
+    print("Yes/No", ans)
     donor_attitude.q15 = ans
     donor_attitude.save()
-    return redirect('/')
+    if ans == 1:
+        request.session['has_given_consent'] = True
+    else:
+        request.session['has_given_consent'] = False
+        
+    return redirect('donor:home')
 
 def get_visitor_id(request):
     #visitor_id =  None 

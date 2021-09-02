@@ -8,7 +8,7 @@ app_name = 'donor'
 urlpatterns = [
     path('', views.hero, name='greetings'),
     path('home/', views.home, name="home"),
-    path('<uuid:sponsor>/', views.home, name="home"),
+    path('home/<uuid:sponsor>/', views.home, name="home"),
     path('stats/donor/', views.donor_stats, name="donor_stats"),
     path('champions/stats/', views.champion_stats, name="champion_stats"),
     path('enrollment/', views.enrollment, name="enrollment"),
@@ -20,5 +20,7 @@ urlpatterns = [
     path('survey/knowledge/', views.donor_knowledge, name="survey_knowledge"),
     path('survey/attitude/', views.donor_attitude, name="survey_attitude"),
     path('survey/attitude/prioity_prompt/<int:ans>', views. prioity_prompt, name="prioity_prompt"),
+    path('donor/badge/<int:donor_id>', views.donor_badge, name="donor_badge"),
+    path('donor/stories/', views.story_list, name="story_list"),
 
 ]

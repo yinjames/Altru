@@ -1,6 +1,8 @@
 {%extends 'donor/profile.html' %}
 {%load static %}
 {% load social_share %}
+
+
 {%block partial%}
 <div class="col-md-6 p-5">
     <div class="row ">
@@ -33,21 +35,13 @@
 
     <div class="row mt-3 g-2 px-auto">
         
-        <div class="d-flex flex-row "> 
-        <div class="whatsapp-this">
-           <button class="btn btn-primary">Invite friends</button>
-        </div>
-        {% post_to_facebook invite_url  "Share on Facebook!" %}
+        <div class="d-flex justify-content-evenly">
+        
+        {% post_to_facebook object_or_url '<i class="fab fa-facebook-square"></i> Share' "btn fb" %}
       
-        {% post_to_twitter  invite_url "Share on Twitter!" %}
-        
-        {% post_to_linkedin invite_url "Share on Linkedin!" %}           
-        
-        {% post_to_reddit invite_url "Share on Reddit!" %}  
-               
-        {% post_to_telegram invite_url "Share on Telegram!" %} 
-                
-        {% post_to_whatsapp invite_url "Share on Whatsapp!" %}
+        {% post_to_twitter "I'm a donor!" object_or_url '<i class="fab fa-twitter-square"></i> Tweet!'  "btn btn-info" %}
+   
+        {% post_to_whatsapp object_or_url '<i class="fab fa-whatsapp-square"></i> Whatsapp!' "btn btn-success" %}
         </div>
         
             

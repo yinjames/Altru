@@ -194,3 +194,11 @@ class DonorAttitude(models.Model):
     q15 = models.SmallIntegerField(blank=True, null=True) #will you give consent if you're prioritize for organ allocation
     def __str__(self):
         return str(self.visitor_id)
+    
+    
+
+class Story(models.Model):
+    champion = models.ForeignKey(Champion, on_delete=models.CASCADE)
+    title = models.CharField(max_length=20)
+    text = models.CharField(max_length=200)
+    name = models.CharField(max_length=50)
