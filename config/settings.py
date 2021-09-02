@@ -1,7 +1,7 @@
 from pathlib import Path
 import os
 
-import django_heroku
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -14,7 +14,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-^+3t04k=&1)i93m1erk2rv#5f+8a@_@z#7h!pjt86z#_qr+buo'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -221,4 +221,3 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #f 326306065948379  83d7791260f100b12b261496af0589f0
 
-django_heroku.settings(locals())
