@@ -56,7 +56,7 @@ class QuizScore(models.Model):
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
     #user = models.ForeignKey(User,  on_delete=models.CASCADE)
     visitor_id = models.UUIDField(blank=True, null=True, editable=False, unique=True)
-    score = models.FloatField()
+    score = models.IntegerField()
 
     def __str__(self):
-        return f"{self.user} - {self.score}"
+        return f"{self.visitor_id} - {self.score}"

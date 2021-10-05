@@ -170,7 +170,6 @@ class DonorKnowledge(models.Model):
 
 class DonorAttitude(models.Model):
    
-  
     #Attitude about organ donation
     visitor_id = models.UUIDField(blank=True, null=True, editable=False, unique=True)
 
@@ -192,13 +191,21 @@ class DonorAttitude(models.Model):
     
     # This is only used when a person negative attitude 
     q15 = models.SmallIntegerField(blank=True, null=True) #will you give consent if you're prioritize for organ allocation
+    quiz_score = models.IntegerField(blank=True,null=True)
+    consent_after_quiz = models.BooleanField(blank=True, null=True)
+    consent_after_story = models.BooleanField(blank=True, null=True)
+    consent_after_reward = models.BooleanField(blank=True, null=True)
+
     def __str__(self):
         return str(self.visitor_id)
     
     
 
 class Story(models.Model):
-    champion = models.ForeignKey(Champion, on_delete=models.CASCADE)
-    title = models.CharField(max_length=20)
-    text = models.CharField(max_length=200)
+    #champion = models.ForeignKey(Champion, on_delete=models.CASCADE)
+    title = models.CharField(max_length=100)
+    text = models.CharField(max_length=500)
     name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.title

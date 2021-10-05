@@ -3,6 +3,7 @@ const url = window.location.href //'quizes/1'//$(this).attr('href')
 const quiz = document.getElementById('quiz')
 var quiz_list = []
 let data
+let consent_url
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -12,11 +13,14 @@ $.ajax({
     url: `${url}data`,
     success: function (response) {
         data = response.data
+        consent_url = response.url
         data.forEach(el => {
             for (const [question, options] of Object.entries(el)) {
 
+                //options.pop()
+                options_ = options.slice(0, -1)
                 opts = ''
-                options.forEach(opt => {
+                options_.forEach(opt => {
                     opt = opt.split(':')
                     text = opt[0]
                     ans = opt[opt.length - 1]
@@ -54,8 +58,6 @@ $(document).on('click', "#next", function () {
         quiz.innerHTML = quiz_list[i]
     }
 
-
-
     i = i + 1
 });
 
@@ -67,20 +69,21 @@ var nextQuestion = function () {
         let score = $("#quiz").attr("score");
         score = parseInt((score / (100* quiz_list.length)) *100)
         let qs =''
-        data.forEach((el) => {
+        data.forEach((el, idx) => {
             for (const [question, options] of Object.entries(el)) {
                 qs +=`
         <div class="accordion-item">
-            <h2 class="accordion-header text-lead" id="flush-headingThree">
+            <h2 class="accordion-header text-lead" id="flush-heading${idx}">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                data-bs-target="#flush-collapseThree" aria-expanded="false"
-                aria-controls="flush-collapseThree">
+                data-bs-target="#flush-${idx}" aria-expanded="false"
+                aria-controls="flush-collapse${idx}">
                 ${question}
             </button>
             </h2>
-            <div id="flush-collapseThree" class="accordion-collapse collapse"
-            aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                <div class="accordion-body">
+            <div id="flush-${idx}" class="accordion-collapse collapse"
+            aria-labelledby="flush-heading${idx}" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body text-left">
+                ${options.pop()}
                 </div>
             </div>
         </div>
@@ -116,14 +119,31 @@ var nextQuestion = function () {
                         </div>
                       </div>
                       <!-- END -->
+                      <div class="row mt-3 g-2 px-auto">
+                      <a href="${consent_url}" class="btn btn-primary mt-3">Will You give consent to donate after death?</a>
+                      <a href="/donor/stories/" class="btn btn-outline-primary mt-3">No</a>
+                      </div>
                     </div>
                   </div>
                     </div>
                 
             </div>
             `;
+            //score_url = `${url}${score}/
+          
             sleep(1000).then(createScore)
         });
+
+        $.ajax({
+            type: 'GET',
+            url: `${url}${score}/`,
+            success: function(response){
+                console.log("score added")
+            },
+            error: function(error){
+                console.log("Error occured adding score")
+            }
+        })
     }
 
     i = i + 1;
@@ -155,7 +175,6 @@ $(document).on("click", ".ans", function () {
 
 
 });
-
 
 
 var createScore = function() {

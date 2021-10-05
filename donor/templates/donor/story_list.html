@@ -4,50 +4,36 @@
 {% load crispy_forms_tags %}
 
 {%block content%}
-<div class="container mt-5 border py-4 px-0 shadow rounded">
+<div class="container mt-5 border py-4 px-3 shadow rounded">
 
-    <i class="fas fa-heartbeat text-primary px-4 d-block mx-auto mb-4 display-4"></i>
+  <i class="fas fa-heartbeat text-primary px-4 d-block mx-auto mb-4 display-4"></i>
 
-    <section class="mx-0 p-4 bg-primary text-white mb-4 border-0">
-        <h1>Stories</h1>
-    </section>
+  <section class="mx-0 p-4 bg-primary text-white mb-4 border-0 text-center">
+    <h1>Stories to commemorate and honor friends and family touched by organ donation and transplantation.</h1>
+  </section>
 
-<div class="card-group" data-masonry='{"itemSelector":".card", "columnWidth": 100 }'>
+  <div class="row row-cols-2 row-cols-md-4 g-4 px-auto" data-masonry='{"percentPosition": true }'>
+
+    {%for story in story_list%}
+    <div class="col">
+      <div class="card  text-center">
   
-    <div class="card  text-center">
-     
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <div class="card-body">
+          <h5 class="card-title mb-3">{{story.title}}:</h5>
+          <p class="card-text">{{story.text}}</p>
+          <p class="text-lead"> by {{story.name}}</p>
+        </div>
       </div>
     </div>
-  
-    <div class="card  text-center">
+    {%endfor%}
+
     
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
-    </div>
-  
-    <div class="card  text-center">
-     
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-      </div>
-    </div>
-  
-    <div class="card">
-     
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
-    </div>
-  
-</div>
- 
+
+  </div>
+  <div class="row mt-3 g-2 px-3">
+    <a href="{%url 'donor:consent_after_story' %}" class="btn btn-primary mt-3 ">Will You give consent to donate after death?</a>
+    <a href="{%url 'donor:reward' %}" class="btn btn-outline-primary mt-3">Not Ready</a>
+  </div>
 </div>
 
 

@@ -1,13 +1,15 @@
 from django.shortcuts import render, redirect
+
 from django.http import HttpResponse, response
 from .forms import DonorAttitudeForm, DonorKnowledgeForm, TeamForm
 import uuid
-from .models import DonorAttitude, DonorKnowledge, Champion, Team
+from .models import DonorAttitude, DonorKnowledge, Champion, Team, Story
 from django.contrib.auth.decorators import login_required
 from quiz.models import Quiz
 from django.contrib.sites.models import Site
 from django.urls import reverse
 from django.contrib.auth.models import User
+from utils import get_visitor_id
 
 def get_url(request, d_url):
     #domain = Site.objects.get_current().domain
@@ -27,15 +29,51 @@ def hero(request):
 def home(request, *args, **kwargs):
     sponsor = str(kwargs.get('sponsor'))
     #request.session.get('has_taken_survey', False)
-    #request.session['has_given_consent'] = False   
+    #request.session['has_given_consent'] = False 
+    #request.session['has_taken_survey'] = False  
     if sponsor:
         request.session['sponsor']  = sponsor
 
     taken_survey = request.session.get('has_taken_survey')
     given_consent = request.session.get('has_given_consent')
     
-    print(given_consent)
     return render(request, "home.html", {'has_taken_survey':taken_survey, 'has_given_consent':given_consent})
+
+
+def consent_after_quiz(request):
+    visitor_id = get_visitor_id(request)
+    try:
+        survey = DonorAttitude.objects.get(visitor_id=visitor_id)
+        survey.consent_after_quiz = True
+        survey.save()
+        return redirect('donor:home')
+    except:
+        return redirect('donor:home')
+
+def consent_after_story(request):
+    visitor_id = get_visitor_id(request)
+    try:
+        survey = DonorAttitude.objects.get(visitor_id=visitor_id)
+        survey.consent_after_story = True
+        survey.save()
+        return redirect('donor:home')
+    except:
+        return redirect('donor:home')
+
+def consent_after_reward(request):
+    visitor_id = get_visitor_id(request)
+    try:
+        survey = DonorAttitude.objects.get(visitor_id=visitor_id)
+        survey.consent_after_reward = True
+        survey.save()
+        return redirect('donor:home')
+    except:
+        return redirect('donor:home')
+
+
+def reward(request):
+
+    return render(request, 'donor/reward.html', {})
 
 
 def donor_stats(request):
@@ -142,8 +180,10 @@ def donor_badge(request, donor_id):
     return render(request, "donor/donor_badge.html",{'donor':donor})
 
 def story_list(request):
-    
-    return render(request, 'donor/story_list.html')
+
+    story_list = Story.objects.all()
+
+    return render(request, 'donor/story_list.html' , {'story_list': story_list})
 
 
 def enrollment(request):
@@ -154,11 +194,10 @@ def enrollment(request):
 def donor_attitude(request):
     visitor_id = get_visitor_id(request)
     
-    print(visitor_id)
     if request.method == "POST":
         form = DonorAttitudeForm(request.POST)
         if form.is_valid():
-            print('form is valid')
+            
             survey = form.save(commit=False)
             if visitor_id:
                 survey.visitor_id = visitor_id
@@ -167,18 +206,15 @@ def donor_attitude(request):
             request.session['has_taken_survey'] = True
             if survey.q12:
                 request.session['has_given_consent'] = True
-                print("Willing to give consent")
+            else:
+                return redirect('quiz:educate_donor')
+                
             return redirect('donor:home')
         else:
-            for er in form.errors:
-                print(er)
             return render(request, "donor/donor_attitude.html", {'form':form})
-
     else:
         form = DonorAttitudeForm()
         #request.session['survey'] = False
-
-    
     return render(request, "donor/donor_attitude.html", {'form':form})
 
 
@@ -189,7 +225,6 @@ def donor_knowledge(request):
     if DonorKnowledge.objects.filter(visitor_id=visitor_id).count():
                 survey = DonorKnowledge.objects.get(visitor_id=uuid.UUID(visitor_id))
 
-    print(survey)
     if request.method == 'POST':
 
         form = DonorKnowledgeForm(request.POST, instance=survey)
@@ -233,13 +268,13 @@ def prioity_prompt(request, *args, **kwargs):
         
     return redirect('donor:home')
 
-def get_visitor_id(request):
-    #visitor_id =  None 
-    if not request.session.get('visitor_id'):
-        request.session['visitor_id'] = str(uuid.uuid4())
-        visitor_id = request.session.get('visitor_id', )
-        #request.session.modified = True
-        return visitor_id
-    else:
-        visitor_id = request.session.get('visitor_id')
-        return visitor_id
+#def get_visitor_id(request):
+#    #visitor_id =  None 
+#    if not request.session.get('visitor_id'):
+#        request.session['visitor_id'] = str(uuid.uuid4())
+#        visitor_id = request.session.get('visitor_id', )
+#        #request.session.modified = True
+#        return visitor_id
+#    else:
+#        visitor_id = request.session.get('visitor_id')
+#        return visitor_id

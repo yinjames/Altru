@@ -23,7 +23,7 @@
                 <h2>Quizes</h2>
                 <hr class="my-2">
                 {%for quiz in quiz_list%}
-                <a href="" class="text-white mb-2">{{quiz.name}}</a>
+                <a href="{%url 'quiz:quiz' id=quiz.id %}" class="text-white mb-2">{{quiz.name}}</a>
                 {%endfor%}
             </div>
             <div class="row">
