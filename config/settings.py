@@ -1,7 +1,8 @@
+
 from pathlib import Path
 import os
-
-
+import dj_database_url
+import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -105,8 +106,8 @@ CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -199,13 +200,14 @@ EMAIL_HOST_PASSWORD = 'pdfzrmozlzomfdhy'
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 
-STATIC_URL = '/static/'
+
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = '/static/'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -221,3 +223,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #f 326306065948379  83d7791260f100b12b261496af0589f0
 
+django_heroku.settings(locals())
