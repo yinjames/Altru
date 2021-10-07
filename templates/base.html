@@ -53,8 +53,6 @@
 
         {%if user.is_authenticated%}
         <a href="{%url 'donor:profile' %}" class="btn btn-outline-light">Profile</a>
-        {%else%}
-        <a href="{% provider_login_url 'google' %}" class="btn btn-outline-light">Register to be a Donor </a>
         {%endif%}
       </div>
     </div>
