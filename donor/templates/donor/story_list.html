@@ -7,16 +7,17 @@
 <div class="container mt-5 border py-4 px-3 shadow rounded">
 
   <i class="fas fa-heartbeat text-primary px-4 d-block mx-auto mb-4 display-4"></i>
-
+  
   <section class="mx-0 p-4 bg-primary text-white mb-4 border-0 text-center">
     <h1>Stories to commemorate and honor friends and family touched by organ donation and transplantation.</h1>
+    <p>This collection of inspiring stories offer insight into the lives of those waiting for transplantation, those living with the loss of loved ones who were organ and tissue donors, those who are living donors as well as those working and volunteering in the field.</p>
   </section>
 
   <div class="row row-cols-2 row-cols-md-4 g-4 px-auto" data-masonry='{"percentPosition": true }'>
 
     {%for story in story_list%}
     <div class="col">
-      <div class="card  text-center">
+      <div class="card  text-center border border-primary">
   
         <div class="card-body">
           <h5 class="card-title mb-3">{{story.title}}:</h5>
@@ -32,7 +33,7 @@
   </div>
   <div class="row mt-3 g-2 px-3">
     <a href="{%url 'donor:consent_after_story' %}" class="btn btn-primary mt-3 ">Will You give consent to donate after death?</a>
-    <a href="{%url 'donor:reward' %}" class="btn btn-outline-primary mt-3">Not Ready</a>
+    <a href="{%url 'donor:reward' %}" class="btn btn-outline-primary mt-3">No</a>
   </div>
 </div>
 

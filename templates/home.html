@@ -4,6 +4,7 @@
 {%block content%}
 {% load socialaccount %}
 
+<!--
 <section class="text-center text-sm-start pt-0 mt-0" style="background-color: #814efa !important;">
 
     <div class="row d-sm-flex align-items-center justify-content-between">
@@ -65,9 +66,61 @@
         </div>
     </div>
 </section>
+-->
 
-
-
+<style>
+    #hero {
+      min-height: 50vh;
+      padding: 30px 0 60px;
+      padding: 30px 0 var(--main-spacing, 60px);
+      background: linear-gradient(-45deg, #814efa, #593196, #341f52);
+      background-size: 300% 300%;
+      animation: gradient 5s ease infinite;
+      color: #fff;
+    }
+    h1,
+    h2,
+    h3 {
+      font-family: futura-pt-condensed, sans-serif;
+      font-weight: 800;
+    }
+  
+    @media (min-width: 998px) {
+      #hero h1 {
+        margin-top: 110px;
+        margin-bottom: 70px;
+        font-size: 100px;
+        line-height: 1;
+      }
+    }
+  </style>
+<div class="" id="hero">
+   
+      <h1 style="text-align: center; text-transform: uppercase; ">Why is deceased organ donation important?</h1>
+        <h4 style="text-align: center;" class="mb-4">Why should I register?</h4>
+        <div class="container">
+    
+        <div class="row mx-3" style="text-align:center">
+            <div class="col-md-4">
+                <i class="far fa-clock display-4 mb-2"></i>
+                <h3>10</h3>
+            <p>Another person is added to the waiting list every 10 minutes</p>
+            </div>
+            <div class="col-md-4">
+                <i class="fas fa-users display-4 mb-2"></i>
+                <h3>20</h3>
+                <p>people die each day because the organ they need is not donated in time</p>
+            </div>
+            <div class="col-md-4">
+                
+                <i class="fas fa-star-of-life display-4 mb-2"></i>
+                <h3>75</h3>
+                <p>One organ, eye and tissue donor can save and heal more than 75 lives</p>
+            </div>
+        </div>
+        </div>
+        
+    </div>
 <section class="container my-5">
     <div class="row text-center">
         <div class="col py-5">
@@ -77,8 +130,6 @@
         </div>
     </div>
 </section>
-
-
 
 
 <section class="bg-warning text-light py-5">
@@ -112,14 +163,14 @@
                     <h2 class="accordion-header" id="flush-headingTwo">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                            Accordion Item #2
+                            Does my religion support organ, eye and tissue donation?
                         </button>
                     </h2>
                     <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
                         data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">Placeholder content for this accordion, which is intended to
-                            demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion
-                            body. Let's imagine this being filled with some actual content.</div>
+                        <div class="accordion-body">All major religions support donation as a final act of compassion and generosity. Visit this page for more in-depth information on religious views on organ, eye and tissue donation.
+
+                        </div>
                     </div>
                 </div>
                 <div class="accordion-item">
@@ -127,16 +178,55 @@
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseThree" aria-expanded="false"
                             aria-controls="flush-collapseThree">
-                            Accordion Item #3
+                            Is there a cost to be an organ, eye and tissue donor?
                         </button>
                     </h2>
                     <div id="flush-collapseThree" class="accordion-collapse collapse"
                         aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">Placeholder content for this accordion, which is intended to
-                            demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion
-                            body. Nothing more exciting happening here in terms of content, but just filling up the
-                            space to make it look, at least at first glance, a bit more representative of how this would
-                            look in a real-world application.</div>
+                        <div class="accordion-body">There is no cost to the donor’s family or estate for donation. The donor family pays only for medical expenses before death and costs associated with funeral arrangements.</div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingFour">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseFour" aria-expanded="false"
+                            aria-controls="flush-collapseFour">
+                            Does registering as a donor change my patient care?
+                        </button>
+                    </h2>
+                    <div id="flush-collapseFour" class="accordion-collapse collapse"
+                        aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">Your life always comes first. Doctors work hard to save every patient’s life, but sometimes there is a complete and irreversible loss of brain function. The patient is declared clinically and legally dead. Only then is donation an option.</div>
+                    </div>
+                </div>
+
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingFive">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseFive" aria-expanded="false"
+                            aria-controls="flush-collapseFive">
+                            Does donation affect funeral plans?
+                        </button>
+                    </h2>
+                    <div id="flush-collapseFive" class="accordion-collapse collapse"
+                        aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">Funeral arrangements of your choice are possible, including a viewing. Through the entire donation process the body is treated with care and respect. Following donation, funeral arrangements can continue as planned</div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingSix">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseSix" aria-expanded="false"
+                            aria-controls="flush-collapseSix">
+                            Can someone who is living with HIV be an organ donor?
+                        </button>
+                    </h2>
+                    <div id="flush-collapseSix" class="accordion-collapse collapse"
+                        aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">In 2015, the HIV Organ Policy Equity (HOPE) Act was passed, allowing for HIV-positive organ donors to donate to recipients living with HIV. The law also allows for a person living with HIV to be a living donor to a transplant candidate living with HIV. As of December 20, 2018, thanks to the HOPE Act and the generosity of HIV-positive deceased donors, 100 lifesaving organ transplants have been performed for candidates living with HIV. In 2019, the HOPE Act expanded to living donation.</div>
                     </div>
                 </div>
             </div>
@@ -153,16 +243,19 @@
        
             <div class="row" style="min-height: 500px;">
                 <div class="d-none d-sm-block col-md-6 m-0 bg-primary " style="min-height: 100%; background-image: url('{%static 'img/organ_donation_red_cross.jpg' %}'); background-position: center;  background-repeat: no-repeat; background-size: cover; ">
-            
+                    <div class="">
+                          
+                    </div>
                 </div>
             
                 <div class="col-md-6 col-ms-12  m-0 py-5 d-flex justify-content-center" style="min-height: 100%;">
-                    <section class="align-self-center text-center">
-                        <p class="">Help us understand your knowledge on organ donation</p>
+                    <section class="align-self-center text-center p-3">
+                        <p>You are invited to participate in a web-based online survey on organ donation. This is a research project.</p>
+                        <p>At the end of the survey, will be asked a series of questions including request to signup onto an experimental deceased donor list. It should take approximately 20 minutes to complete.</p>
+                        <p class="text-primary">Help us understand your knowledge on organ donation.</p>
                     
                    
-                        <a href="{%url 'donor:survey_knowledge'%}" class="btn btn-primary align-self-center mx-auto py-4 px-5">Quick
-                            Survey</a>
+                        <a href="{%url 'donor:survey_knowledge'%}" class="btn btn-primary align-self-center mx-auto py-4 px-5">Start</a>
                     </section>
                   
                       
@@ -177,31 +270,7 @@
 </div>
 {%endif%}
 
-{%if has_taken_survey and not has_given_consent%}
- <!-- Modal -->
- <div class="modal fade shadow " id="surveyModal"  data-bs-keyboard="false" tabindex="-1"
- aria-labelledby="exampleModalLabel" aria-hidden="true">
- <div class="modal-dialog modal-xl modal-dialog-centered">
-   <div class="modal-content p-0">
-     <div class="modal-body m-0 p-0 m-0">       
-            <div class="row" style="min-height: 500px;">
-                <div class="d-none d-sm-block col-md-6 m-0 bg-primary " style="min-height: 100%; background-image: url('{%static 'img/question.png' %}'); background-position: center;  background-repeat: no-repeat; background-size: cover; ">           
-                </div>            
-                <div class="col-md-6 col-ms-12  m-0 py-5 d-flex justify-content-center" style="min-height: 100%;">
-                    <section class="align-self-center text-center px-3">
-                        <p class="">Will you give consent to become a deceased donor, if you will be given priority in the allocation of organs for transplantation over those who have not.</p>
-                        <div class="d-grid gap-2 col-10 mx-auto">
-                        <a href="{% url 'donor:prioity_prompt' ans=1 %}" class="btn btn-outline-success p-3"> <i class="fas fa-thumbs-up"></i> Yes</a>
-                        <a href="{% url 'donor:prioity_prompt' ans=0 %}" class="btn btn-outline-danger p-3"> <i class="fas fa-thumbs-down"></i> No</a>
-                        </div>
-                    </section>
-                </div>
-            </div>
-     </div>
-   </div>
- </div>
-</div>
-{%endif%}
+
 
 
 {%if has_given_consent%}

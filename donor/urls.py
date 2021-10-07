@@ -6,8 +6,8 @@ from . import views
 app_name = 'donor'
 
 urlpatterns = [
-    path('', views.hero, name='greetings'),
-    path('home/', views.home, name="home"),
+    #path('', views.hero, name='greetings'),
+    path('', views.home, name="home"),
     path('home/<uuid:sponsor>/', views.home, name="home"),
     path('stats/donor/', views.donor_stats, name="donor_stats"),
     path('champions/stats/', views.champion_stats, name="champion_stats"),

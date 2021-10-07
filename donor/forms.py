@@ -78,7 +78,7 @@ class DonorKnowledgeForm(ModelForm):
     q2 = forms.MultipleChoiceField(label='2. Sources of information about organ donation ', widget=forms.CheckboxSelectMultiple, choices=INFO_SOURCE)
     q3 = forms.IntegerField(label='3. Do you know someone who is a recipient of organ transplant?',widget=forms.RadioSelect(choices=YES_NO))
     q4 = forms.IntegerField(label='4. Do you know someone who’s relative is a recipient of organ transplant?', widget=forms.RadioSelect(choices=YES_NO))
-    q5 = forms.IntegerField(label='5. Effect of organ donation on recipient’s health', widget=forms.RadioSelect(choices=YES_NO))
+    q5 = forms.IntegerField(label='5. Does organ donation has effect on the recipient’s health?', widget=forms.RadioSelect(choices=YES_NO))
     q6 = forms.IntegerField(label='6. Is organ donation legal?', widget=forms.RadioSelect(choices=YES_NO))
     q7 = forms.IntegerField(label='7. Will someone who is brain-dead react (grimace, move away, or blink) if someone touches their eyeball?', widget=forms.RadioSelect(choices=YES_NO))
     q8 = forms.IntegerField(label='8. Can a person be brain-dead even if the heart is still beating? ', widget=forms.RadioSelect(choices=YES_NO))
@@ -98,24 +98,24 @@ class DonorKnowledgeForm(ModelForm):
 class DonorAttitudeForm(ModelForm):
 
     q1 = forms.IntegerField(label='Are you willing to donate an organ?', widget=forms.RadioSelect(choices=YES_NO)) 
-    q2 = forms.CharField(label='If no, why?', max_length=100, widget=forms.Textarea, required=False )  
+    #q2 = forms.CharField(label='If no, why?', max_length=100, widget=forms.Textarea, required=False )  
     q3 = forms.IntegerField(label='If yes, when (Living or after death)', widget=forms.RadioSelect(choices=DEAD_ALIVE), required=False) 
-    q4 = forms.CharField(label="If the answer is yes, why?",widget=forms.Textarea, max_length=100, required=False) 
+    #q4 = forms.CharField(label="If the answer is yes, why?",widget=forms.Textarea, max_length=100, required=False) 
 
     q5 = forms.MultipleChoiceField(
         label='What organs will you donate during life?',
     widget=forms.CheckboxSelectMultiple, 
     choices=ORGANS,required=False ) 
 
-    q6 = forms.CharField(label='If the answer is (after death), why? ', max_length=100, widget=forms.Textarea, required=False)
+    #q6 = forms.CharField(label='If the answer is (after death), why? ', max_length=100, widget=forms.Textarea, required=False)
     q7 = forms.MultipleChoiceField(label='What organs will you donate after death? ', widget=forms.CheckboxSelectMultiple, choices=ORGANS, required=False)
 
-    q8 = forms.CharField(label='Who are you willing to donate for?', max_length=100, widget=forms.Textarea, required=False) 
-    q9 = forms.CharField(label='In your opinion, what causes people not to donate organs?', max_length=100, widget=forms.Textarea, required=False) 
-    q10 = forms.CharField(label='What do you think of the methods to increase consent for donation? ', max_length=100, widget=forms.Textarea, required=False) 
+    #q8 = forms.CharField(label='Who are you willing to donate for?', max_length=100, widget=forms.Textarea, required=False) 
+    #q9 = forms.CharField(label='In your opinion, what causes people not to donate organs?', max_length=100, widget=forms.Textarea, required=False) 
+    #q10 = forms.CharField(label='What do you think of the methods to increase consent for donation? ', max_length=100, widget=forms.Textarea, required=False) 
     q11 = forms.IntegerField(label='Do you know someone who has given consent to donate after death?', widget=forms.RadioSelect(choices=YES_NO))   
     q12 = forms.IntegerField(label='Are you willing to give consent to donate your organs after death?', widget=forms.RadioSelect(choices=YES_NO), required=False)  
-    q13 = forms.CharField(label='If no, why? ', max_length=100, widget=forms.Textarea, required=False) 
+    #q13 = forms.CharField(label='If no, why? ', max_length=100, widget=forms.Textarea, required=False) 
     q14 = forms.IntegerField(label='If you have a family member who is a brain-dead, would you consent to donate his/her organs?', widget=forms.RadioSelect(choices=YES_NO)) 
     
     class Meta:

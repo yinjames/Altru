@@ -175,18 +175,18 @@ class DonorAttitude(models.Model):
 
     date_completed = models.DateField(auto_now_add=True)
     q1 = models.SmallIntegerField(choices=YES_NO)  #Are you willing to donate an organ? 
-    q2 = models.CharField(max_length=500) #If no, why? 
+    #q2 = models.CharField(max_length=500) #If no, why? 
     q3 = models.SmallIntegerField(choices=YES_NO, blank=True, null=True) #If the answer to question 1 is yes, when (Living or after death):
-    q4 = models.CharField(max_length=500, blank=True, null=True) #If the answer is yes, why? 
+    #q4 = models.CharField(max_length=500, blank=True, null=True) #If the answer is yes, why? 
     q5 = MultiSelectField(choices=ORGANS, blank=True, null=True) #What organs will you donate during life? 
-    q6 = models.CharField(max_length=500, blank=True, null=True) #If the answer is (after death), why? 
+    #q6 = models.CharField(max_length=500, blank=True, null=True) #If the answer is (after death), why? 
     q7 = MultiSelectField(choices=ORGANS, blank=True, null=True) #What organs will you donate after death? 
-    q8 = models.CharField(max_length=100, blank=True, null=True) #Who are you willing to donate for? 
-    q9 = models.CharField(max_length=500, blank=True, null=True) #In your opinion, what causes people not to donate organs? 
-    q10 = models.CharField(max_length=500, blank=True, null=True) #What do you think of the methods to increase consent for donation? 
+    #q8 = models.CharField(max_length=100, blank=True, null=True) #Who are you willing to donate for? 
+    #q9 = models.CharField(max_length=500, blank=True, null=True) #In your opinion, what causes people not to donate organs? 
+    #q10 = models.CharField(max_length=500, blank=True, null=True) #What do you think of the methods to increase consent for donation? 
     q11 = models.SmallIntegerField(choices=YES_NO) #Do you know someone who has given consent to donate after death?   
     q12 = models.SmallIntegerField(choices=YES_NO) #Are you willing to give consent to donate after death? 
-    q13 = models.CharField(max_length=200, blank=True, null=True) #If no, why? 
+    #q13 = models.CharField(max_length=200, blank=True, null=True) #If no, why? 
     q14 = models.SmallIntegerField(choices=YES_NO) #If you have a family member who is a brain-dead, would you consent to donate his/her organs?
     
     # This is only used when a person negative attitude 
@@ -209,3 +209,12 @@ class Story(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Faq(models.Model):
+
+    question  = models.CharField(max_length=500)
+    answer = models.CharField(max_length=1000)
+
+    def __str__(self):
+        return self.question
