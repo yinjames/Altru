@@ -96,8 +96,8 @@ ACCOUNT_USERNAME_REQUIRED = False
 
 ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 5
 ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 86400
-ACCOUNT_LOGOUT_REDIRECT_URL = '/home/'
-LOGIN_REDIRECT_URL = '/home/'
+ACCOUNT_LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/'
 ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
 #ACCOUNT_SIGNUP_REDIRECT_URL = "donor/profile/"
 
@@ -156,7 +156,7 @@ DATABASES = {
             'NAME': 'altrui',
     },
 
-    'dev': {
+    'dev-default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }

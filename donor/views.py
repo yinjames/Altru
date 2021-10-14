@@ -27,6 +27,17 @@ def hero(request):
 
 
 def home(request, *args, **kwargs):
+    visitor_id = get_visitor_id(request)
+
+    if request.user.is_authenticated:
+        print(request.user.email)
+        try:
+            survey = DonorAttitude.objects.get(visitor_id=visitor_id)
+            survey.email = request.user.email
+            survey.save()
+        except:
+            pass
+
     sponsor = str(kwargs.get('sponsor'))
     #request.session.get('has_taken_survey', False)
     #request.session['has_given_consent'] = False 
@@ -74,6 +85,22 @@ def consent_after_reward(request):
 def reward(request):
 
     return render(request, 'donor/reward.html', {})
+
+
+def consent_msg(request):
+    visitor_id = get_visitor_id(request)
+    print(visitor_id)
+    try:
+        survey = DonorAttitude.objects.get(visitor_id=visitor_id)
+        print(visitor_id)
+        msg = request.POST.get('consent_msg')
+
+        survey.consent_msg = msg
+        survey.save()
+        return redirect('/accounts/signup')
+    except:
+        return redirect('/accounts/signup')
+
 
 
 def donor_stats(request):
@@ -172,12 +199,14 @@ def profile_team_stats(request):
 
     return render(request, 'donor/partials/profile_team_stats.html', { 'quiz_list':quiz_list, 'team_members':team_members, 'team':request.user.champion.team})
 
-def donor_badge(request, donor_id):
+def donor_badge(request):
     
    
-    donor = User.objects.get(id=donor_id)
+    #donor = User.objects.get(id=donor_id)
     
-    return render(request, "donor/donor_badge.html",{'donor':donor})
+    return render(request, "donor/donor_badge.html",{})
+
+
 
 def story_list(request):
 
@@ -237,6 +266,7 @@ def donor_knowledge(request):
 
             return redirect('donor:survey_attitude')
         else:
+            print("form not valid")
             return render(request, "donor/donor_knowledge.html", {'form':form})
 
     else:
@@ -252,6 +282,7 @@ def donor_knowledge(request):
             form = DonorKnowledgeForm()
        
             return render(request, "donor/donor_knowledge.html", {'form':form})
+
 
 
 def prioity_prompt(request, *args, **kwargs):

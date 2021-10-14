@@ -20,12 +20,13 @@ urlpatterns = [
     path('survey/knowledge/', views.donor_knowledge, name="survey_knowledge"),
     path('survey/attitude/', views.donor_attitude, name="survey_attitude"),
     path('survey/attitude/prioity_prompt/<int:ans>', views. prioity_prompt, name="prioity_prompt"),
-    path('donor/badge/<int:donor_id>', views.donor_badge, name="donor_badge"),
+    path('donor/badge/', views.donor_badge, name="donor_badge"),
     path('donor/stories/', views.story_list, name="story_list"),
     path('donor/consent/quiz/', views.consent_after_quiz, name="consent_after_quiz"),
     path('donor/consent/story/', views.consent_after_story, name="consent_after_story"),
     path('donor/consent/reward/', views.consent_after_reward, name="consent_after_reward"),
     path('donor/reward/', views.reward, name="reward"),
+    path('donor/consent/msg', views.consent_msg, name="consent_msg"),
 
 
 ]

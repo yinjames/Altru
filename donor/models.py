@@ -154,7 +154,7 @@ class DonorKnowledge(models.Model):
     date_completed = models.DateField(auto_now_add=True)
     #knowledge about organ donation
     q1 = models.SmallIntegerField(choices=YES_NO)
-    q2 = MultiSelectField(choices=INFO_SOURCE,)
+    q2 = MultiSelectField(choices=INFO_SOURCE, null=True, blank=True)
     q3 = models.SmallIntegerField(choices=YES_NO)
     q4 = models.SmallIntegerField(choices=YES_NO)
     q5 = models.SmallIntegerField(choices=YES_NO)
@@ -171,6 +171,7 @@ class DonorKnowledge(models.Model):
 class DonorAttitude(models.Model):
    
     #Attitude about organ donation
+    email = models.EmailField(null=True, blank=True)
     visitor_id = models.UUIDField(blank=True, null=True, editable=False, unique=True)
 
     date_completed = models.DateField(auto_now_add=True)
@@ -195,6 +196,7 @@ class DonorAttitude(models.Model):
     consent_after_quiz = models.BooleanField(blank=True, null=True)
     consent_after_story = models.BooleanField(blank=True, null=True)
     consent_after_reward = models.BooleanField(blank=True, null=True)
+    consent_msg = models.CharField(max_length=1000, null=True, blank=True)
 
     def __str__(self):
         return str(self.visitor_id)
