@@ -102,6 +102,21 @@ def consent_msg(request):
         return redirect('/accounts/signup')
 
 
+def no_consent_msg(request):
+    visitor_id = get_visitor_id(request)
+    print(visitor_id)
+    try:
+        survey = DonorAttitude.objects.get(visitor_id=visitor_id)
+        print(visitor_id)
+        msg = request.POST.get('no_consent_msg')
+
+        survey.no_consent_msg = msg
+        survey.save()
+        return redirect('/')
+    except:
+        return redirect('/')
+
+
 
 def donor_stats(request):
 

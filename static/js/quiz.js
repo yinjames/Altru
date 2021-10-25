@@ -120,7 +120,8 @@ var nextQuestion = function () {
                       </div>
                       <!-- END -->
                       <div class="row mt-3 g-2 px-auto">
-                      <a href="${consent_url}" class="btn btn-primary mt-3 consent">Will You give consent to donate after death?</a>
+                      <p>Will You give consent to donate your organs after death?</p>
+                      <a href="${consent_url}" class="btn btn-outline-primary mt-3 consent">Yes</a>
                       <a href="/donor/stories/" class="btn btn-outline-primary mt-3">No</a>
                       </div>
                     </div>

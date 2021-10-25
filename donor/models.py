@@ -7,6 +7,7 @@ from django.dispatch import receiver
 from django.contrib.auth.models import User
 
 from functools import partial as curry
+
 YES_NO = (
     (0, 'No'),
     (1, 'Yes')
@@ -35,7 +36,8 @@ AGE_RANGE = (
 INFO_SOURCE = (
     ('Radio/TV', 'Radio/TV'),
     ('Social Media', 'Social Media'),
-    ('News Papers', 'News Papers')
+    ('News Papers', 'News Papers'),
+    ('Web', 'The web')
 )
 
 QUALIFICATION =(
@@ -197,6 +199,7 @@ class DonorAttitude(models.Model):
     consent_after_story = models.BooleanField(blank=True, null=True)
     consent_after_reward = models.BooleanField(blank=True, null=True)
     consent_msg = models.CharField(max_length=1000, null=True, blank=True)
+    no_consent_msg = models.CharField(max_length=1000, null=True, blank=True)
 
     def __str__(self):
         return str(self.visitor_id)

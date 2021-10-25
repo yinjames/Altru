@@ -72,7 +72,7 @@
   <div class="modal-dialog  modal-dialog-centered rounded-3">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="">What informed your decision to support organ donation?</h5>
+        <h5 class="modal-title" id="">What informed your decision to support deceased organ donation?</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <form action="{%url 'donor:consent_msg' %}" method="POST">
@@ -96,6 +96,34 @@
  </div>
 
 
+ <div class="modal fade shadow rounded-3" id="no-consent-modal" data-bs-backdrop="static"  data-bs-keyboard="false" tabindex="-1"
+ aria-hidden="true">
+<div class="modal-dialog  modal-dialog-centered rounded-3">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="">What is/are your reason(s) for not supporting deceased organ donation?</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <form action="{%url 'donor:no_consent_msg' %}" method="POST">
+    <div class="modal-body ">
+      
+     
+        {% csrf_token %}
+        <div class="mb-3">
+        
+          <textarea class="form-control rounded-3"  rows="3" id="no_consent-msg" name="no_consent_msg"></textarea>
+        </div>
+     
+
+    </div>
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-primary rounded-3 btnSubmit">Send</button>
+    </div>
+  </form>
+  </div>
+</div>
+</div>
+
   <script>
     $(document).ready(function () {
       $('#surveyModal').modal('show')
@@ -115,6 +143,23 @@
 
         $('#consent-modal').modal('show')
       })
+
+      $(document).on('click', '.no-consent', function(e){
+        e.preventDefault();
+        var url = $(this).attr('href')
+        console.log($(this).attr('href'))
+        $.ajax({
+          type: 'GET',
+          url: url,
+          success: function(response){
+
+          }
+
+        });
+
+        $('#no-consent-modal').modal('show')
+      })
+
 
     $(document).on('click', '.btnSubmit', function(){
       //$('#consent-modal').modal('hide')

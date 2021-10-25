@@ -27,6 +27,7 @@ urlpatterns = [
     path('donor/consent/reward/', views.consent_after_reward, name="consent_after_reward"),
     path('donor/reward/', views.reward, name="reward"),
     path('donor/consent/msg', views.consent_msg, name="consent_msg"),
+    path('donor/consent/no_msg', views.no_consent_msg, name="no_consent_msg"),
 
 
 ]
