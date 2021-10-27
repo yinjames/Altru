@@ -152,12 +152,12 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'heroku': {
+    'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'NAME': 'altrui',
     },
 
-    'default': {
+    'dev': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
