@@ -36,8 +36,9 @@ AGE_RANGE = (
 INFO_SOURCE = (
     ('Radio/TV', 'Radio/TV'),
     ('Social Media', 'Social Media'),
+    ('Internet', 'Internet'),
     ('News Papers', 'News Papers'),
-    ('Web', 'The web')
+    
 )
 
 QUALIFICATION =(
