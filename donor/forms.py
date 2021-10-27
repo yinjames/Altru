@@ -32,8 +32,11 @@ GENDER = (
     )
 
 AGE_RANGE = (
-    ('18-64', '18-64 years'),
-    ('65', '65 years or older')
+    (1, '18-24 years'),
+    (2, '25-34 years'),
+    (3, '35-44 years'),
+    (4, '45-54 years'),
+    (5, '55 years or older')
 )
 
 INFO_SOURCE = (
@@ -70,10 +73,10 @@ class TeamForm(ModelForm):
 
 class DonorKnowledgeForm(ModelForm):
 
-    gender = forms.IntegerField(label='Sex:', widget=forms.RadioSelect(choices=GENDER))
-    qualification = forms.CharField(label='Academic qualification:', widget=forms.RadioSelect(choices=QUALIFICATION))
-    marital_status = forms.IntegerField(label='Marital status:', widget=forms.RadioSelect(choices=MARITAL_STATUS))
-  
+    gender = forms.IntegerField(label='What is your gender?', widget=forms.RadioSelect(choices=GENDER))
+    qualification = forms.CharField(label='What is your highest academic qualification?', widget=forms.RadioSelect(choices=QUALIFICATION))
+    marital_status = forms.IntegerField(label='What is your pmarital status?', widget=forms.RadioSelect(choices=MARITAL_STATUS))
+    age= forms.IntegerField(label='What is your age?',  widget=forms.RadioSelect(choices=AGE_RANGE))
     #knowledge about organ donation
     q1 = forms.IntegerField(label='1. Have you heard about organ donation?', widget=forms.RadioSelect(choices=YES_NO))
     q2 = forms.MultipleChoiceField(label='2. Sources of information about organ donation ', widget=forms.CheckboxSelectMultiple, choices=INFO_SOURCE, required=False)
@@ -90,7 +93,7 @@ class DonorKnowledgeForm(ModelForm):
     class Meta:
         model = DonorKnowledge
     
-        fields = ('gender','qualification', 'marital_status', 'q1', 'q2', 'q3', 'q4','q5','q6','q7', 'q8', 'q9', 'q10' )
+        fields = ('gender', 'age','qualification', 'marital_status', 'q1', 'q2', 'q3', 'q4','q5','q6','q7', 'q8', 'q9', 'q10' )
         
         def __init__(self, *args, **kwargs):
             super(DonorKnowledgeForm, self).__init__(*args, **kwargs)

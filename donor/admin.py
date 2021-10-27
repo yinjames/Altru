@@ -13,7 +13,7 @@ class DonorAttitudeAdmin(ImportExportModelAdmin):
 
 class DonorknowledgeAdmin(ImportExportModelAdmin):
 
-    list_display  = ('gender', 'qualification', 'marital_status','q1', 'q2','q3','q4','q5', 'q6','q7', 'q8','q9','q10', )
+    list_display  = ('gender', 'age', 'qualification', 'marital_status','q1', 'q2','q3','q4','q5', 'q6','q7', 'q8','q9','q10', )
 
 admin.site.register(DonorAttitude, DonorAttitudeAdmin)
 admin.site.register(DonorKnowledge, DonorknowledgeAdmin)

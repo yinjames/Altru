@@ -47,6 +47,26 @@
                 {% endfor %}
             </div>
 
+            <hr class="my-4">
+
+            <div class="mb-3">
+
+
+                {{ form.age.label_tag }}
+
+                <br>
+                {% for pk, choice in form.age.field.widget.choices %}
+                <div class="form-check form-check-inline mt-2">
+                    <input id="id_{{form.age.name}}_{{ forloop.counter0 }}"
+                        name="{{form.age.name}}" type="{{form.age.field.widget.input_type}}"
+                        value="{{pk}}" class="form-check-input ms-2" required />
+                    <label for="id_{{form.age.name}}_{{ forloop.counter0 }}"
+                        class="custom-control-label ms-2">{{ choice }}</label>
+                </div>
+                {% endfor %}
+            </div>
+            
+            <hr class="my-4">
 
             <div class="mb-3">
 
@@ -65,7 +85,7 @@
                 {% endfor %}
             </div>
 
-
+            <hr class="my-4">
             <div class="mb-3">
 
 

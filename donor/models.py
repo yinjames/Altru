@@ -29,8 +29,11 @@ ORGANS = (
     )
 
 AGE_RANGE = (
-    ('18-64', '18-64 years'),
-    ('65', '65 years or older')
+    (1, '18-24 years'),
+    (2, '25-34 years'),
+    (3, '35-44 years'),
+    (4, '45-54 years'),
+    (5, '55 years or older')
 )
 
 INFO_SOURCE = (
@@ -152,6 +155,7 @@ class DonorKnowledge(models.Model):
     visitor_id = models.UUIDField(blank=True, null=True, editable=False, unique=True)
     gender = models.IntegerField(choices=GENDER)
     qualification = models.CharField(max_length=50, choices=QUALIFICATION)
+    age = models.IntegerField(choices=AGE_RANGE)
     #income_range = models.DecimalField(max_digits=6, decimal_places=2)
     marital_status = models.IntegerField(choices=MARITAL_STATUS)
     date_completed = models.DateField(auto_now_add=True)
