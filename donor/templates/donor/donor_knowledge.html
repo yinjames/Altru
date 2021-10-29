@@ -16,9 +16,11 @@
     {% endif %}
 
     <section class="mx-0 p-4 bg-primary text-white mb-4 border-0">
-        <p>You are invited to participate in a web-based online survey on Organ Donation. This is a research
-            project being conducted by James Yin, a student at University of Ghana, Computer Science Department.  It
-            should take approximately 20 minutes to complete.  </p>
+        <p>Welcome to the survey and thank you for agreeing to take part.</p>
+        <p>We are interested in your views on some issues that some people can find sensitive. However, any and all
+            information you can give will be extremely helpful so please do tell us all that you can. There are no right or
+            wrong answers - it is what you think and feel personally that is most important and all the information you
+            give in this study will be kept confidential.</p>
     </section>
 
 
@@ -51,9 +53,7 @@
 
             <div class="mb-3">
 
-
                 {{ form.age.label_tag }}
-
                 <br>
                 {% for pk, choice in form.age.field.widget.choices %}
                 <div class="form-check form-check-inline mt-2">
@@ -65,14 +65,9 @@
                 </div>
                 {% endfor %}
             </div>
-            
             <hr class="my-4">
-
             <div class="mb-3">
-
-
                 {{ form.marital_status.label_tag }}
-
                 <br>
                 {% for pk, choice in form.marital_status.field.widget.choices %}
                 <div class="form-check form-check-inline mt-2">
@@ -88,9 +83,7 @@
             <hr class="my-4">
             <div class="mb-3">
 
-
                 {{ form.qualification.label_tag }}
-
                 <br>
                 {% for pk, choice in form.qualification.field.widget.choices %}
                 <div class="form-check form-check-inline mt-2">
@@ -103,12 +96,8 @@
                 {% endfor %}
             </div>
             <hr class="my-4">
-
             <div class="mb-3">
-
-
                 {{ form.q1.label_tag }}
-
                 <br>
                 {% for pk, choice in form.q1.field.widget.choices %}
                 <div class="form-check form-check-inline mt-2">
@@ -123,9 +112,7 @@
             <hr class="my-4">
             <div class="mb-3">
 
-
                 {{ form.q2.label_tag }}
-
                 <br>
                 {% for pk, choice in form.q2.field.widget.choices %}
                 <div class="form-check form-check-inline mt-2">
